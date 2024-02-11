@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 export const getBalance = async (req: Request, res: Response) => {
     try {
       const account = await Account.findOne({
-        userId: req.userId,
+        userId: req.user._id,
       });
 
       if (!account) {
@@ -34,7 +34,7 @@ export const getBalance = async (req: Request, res: Response) => {
       session.startTransaction();
     const { amount, to } = req.body;
     //to fetch the accounts involved in the transaction
-    const account = await Account.findOne({ userId: req.userId }).session(
+    const account = await Account.findOne({ userId: req.user._id }).session(
       session
     );
 
@@ -58,7 +58,7 @@ export const getBalance = async (req: Request, res: Response) => {
 
     //doing the transaction
     const updateSender = await Account.updateOne(
-      { userId: req.userId },
+      { userId: req.user._id },
       {
         $inc: { balance: -amount },
       }

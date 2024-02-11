@@ -3,42 +3,86 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
+import axios from "axios"
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { useToast } from "@/components/ui/use-toast"
+
+
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  username: z.string().email().min(3, {
+    message: "Please enter a valid email",
+  }),
+  firstName: z.string().min(2, {
+    message: "Firstname must be atleast 2 characters.",
+  }),
+  lastName: z.string().min(2, {
+    message: "Lastname must be atleast 2 characters.",
+  }),
+  password: z.string().min(6, {
+    message: "Password must be at least 6 characters.",
   }),
 })
 
 const Signup = () => {
+  const {toast} = useToast();
 // 1. Define your form.
 const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
   defaultValues: {
     username: "",
+    firstName:"",
+    lastName:"",
+    password:"",
   },
 })
  // 2. Define a submit handler.
- function onSubmit(values: z.infer<typeof formSchema>) {
-  // Do something with the form values.
-  // ✅ This will be type-safe and validated.
-  console.log(values)
+ async function onSubmit(values: z.infer<typeof formSchema>) {
+
+  try {
+
+    const response  = await axios.post(
+      "http://localhost:3000/api/v1/user/signup",
+     values,
+      {
+        headers:{
+          "Content-Type":"application/json",
+
+        },
+        withCredentials:true,
+      }
+    )
+    if(response.status === 200){
+      toast({
+        description:"Signup successful"
+      });
+      form.reset();
+    }else{
+      toast({
+        description:"Signup Failed"
+      })
+    }
+    console.log(response)
+  } catch (error) {
+    toast({
+      description:"Signup Error"
+    })
+  }
+  
+  
 }
   return (
     
-      <div className="my-[5rem] mx-auto md:w-[30%] w-[70%]">
+      <div className="my-[9rem] mx-auto md:w-[30%] w-[70%]">
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -57,7 +101,7 @@ const form = useForm<z.infer<typeof formSchema>>({
         />
          <FormField
           control={form.control}
-          name="username"
+          name="firstName"
           render={({ field }) => (
             <FormItem>
               <FormLabel>FirstName</FormLabel>
@@ -71,7 +115,7 @@ const form = useForm<z.infer<typeof formSchema>>({
         />
          <FormField
           control={form.control}
-          name="username"
+          name="lastName"
           render={({ field }) => (
             <FormItem>
               <FormLabel>LastName</FormLabel>
@@ -85,12 +129,12 @@ const form = useForm<z.infer<typeof formSchema>>({
         />
          <FormField
           control={form.control}
-          name="username"
+          name="password"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your password" {...field} />
+                <Input type="password" placeholder="Enter your password" {...field} />
               </FormControl>
               
               <FormMessage />
@@ -100,6 +144,7 @@ const form = useForm<z.infer<typeof formSchema>>({
         <Button variant={"outline"} type="submit">Submit</Button>
       </form>
     </Form>
+  
     </div>
 
   )

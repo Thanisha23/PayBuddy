@@ -1,40 +1,88 @@
 "use client"
-
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-
+import axios from "axios"
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-
+import { useToast } from "@/components/ui/use-toast"
+import { useNavigate } from "react-router-dom"
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  username: z.string().min(3, {
+    message: "Invalid email",
+  }),
+  password: z.string().min(6, {
+    message: "Invalid Password",
   }),
 })
 
 const Signin = () => {
-// 1. Define your form.
+  const navigate = useNavigate();
+const {toast} = useToast();
 const form = useForm<z.infer<typeof formSchema>>({
   resolver: zodResolver(formSchema),
   defaultValues: {
     username: "",
+    password:"",
   },
 })
- // 2. Define a submit handler.
- function onSubmit(values: z.infer<typeof formSchema>) {
-  // Do something with the form values.
-  // ✅ This will be type-safe and validated.
-  console.log(values)
+async function logoutHandler(){
+  try {
+    await axios.get(
+      "http://localhost:3000/api/v1/user/logout",
+      {
+        withCredentials:true,
+      }
+    );
+    toast({
+      description:"Logged out"
+    })
+    navigate("/");
+  } catch (error) {
+    toast({
+      description:"Error logging out"
+    })
+    
+  }
+}
+async function onSubmit(values: z.infer<typeof formSchema>) {
+try {
+    const response = await axios.post(
+      "http://localhost:3000/api/v1/user/signin",
+      values,
+      {
+        headers:{
+          "Content-Type":"application/json",
+        },
+        withCredentials:true,
+      }
+    )
+    if(response.status === 200){
+      toast({
+        description:"Login successful"
+      });
+      navigate("/dashboard")
+    }else{
+      toast({
+        description:"Login Failed"
+      })
+    }
+} catch (error) {
+  toast({
+    description:"Login Error"
+  
+})
+console.log(error);
+}
+  // console.log(values)
 }
   return (
     
@@ -57,12 +105,12 @@ const form = useForm<z.infer<typeof formSchema>>({
         />
           <FormField
           control={form.control}
-          name="username"
+          name="password"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your password" {...field} />
+                <Input type="password" placeholder="Enter your password" {...field} />
               </FormControl>
               
               <FormMessage />
@@ -71,8 +119,13 @@ const form = useForm<z.infer<typeof formSchema>>({
         />
          
         <Button variant={"outline"} type="submit">Submit</Button>
+        
       </form>
+      <Button variant={"outline"} onClick={()=>{
+      logoutHandler()
+    }} className="ml-7">Logout</Button>
     </Form>
+    
     </div>
 
   )

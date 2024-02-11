@@ -1,42 +1,33 @@
 import { NextFunction, Request, Response } from "express";
 import env from '../utils/validateEnv'
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { ResponseStatus } from "../types/statusCode";
+import { User } from "../db/index";
 
-
-enum ResonseStatus {
-    Success = 200,
-    NotFound = 404,
-    Error = 500,
-    InputError = 411
-}
 declare global{
     namespace Express{
         interface Request{
             email:string;
             password:string;
             userId?:string;
+            user?:any;
         }
     }
 }
-const authMiddleware = (req:Request,res:Response,next:NextFunction) => {
-    const authHeader = req.headers.authorization;
+const authMiddleware = async (req:Request,res:Response,next:NextFunction) => {
+   const {token} = req.cookies;
 
-    if(!authHeader || !authHeader.startsWith('Bearer')){
-        return res.status(ResonseStatus.Error).json({});
-    }
+    // console.log(token);
+   if(!token){
+    return res.status(ResponseStatus.Error).json({
+        message:"Not logged in!",
+    });
+   }
+const decoded = jwt.verify(token,env.JWT_SECRET) as JwtPayload;
 
-    const token = authHeader.split(' ')[1];
-
-    try {
-        const decoded = jwt.verify(token,env.JWT_SECRET) as JwtPayload;
-
-        req.userId = decoded.userId;
-        next();
-    } catch (error) {
-        return res.status(ResonseStatus.Error).json({
-            message:"Error in Authentication",
-        });
-    }
+req.user = await User.findById(decoded.userId);
+// console.log(req.user);
+next();
 };
 
 export default authMiddleware;

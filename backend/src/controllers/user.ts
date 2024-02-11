@@ -4,6 +4,8 @@ import { ResponseStatus } from "../types/statusCode";
 import { User,Account } from "../db/index";
 import jwt from "jsonwebtoken";
 import env from "../utils/validateEnv"
+import bcrypt from "bcrypt";
+
 const signupBody = zod.object({
     username:zod.string().email(),
     firstName:zod.string(),
@@ -20,6 +22,8 @@ const updateBody = zod.object({
     lastName:zod.string().optional(),
 })
 
+
+
 //signup
 export const signup = async (req:Request,res:Response) => {
     const {success} = signupBody.safeParse(req.body);
@@ -31,16 +35,18 @@ export const signup = async (req:Request,res:Response) => {
 
     const existingUser = await User.findOne({
         username:req.body.username
-    })
+    }).select("+password");
 
     if(existingUser){
         return res.status(ResponseStatus.InputError).json({
             message:"Email already taken"
         })
     }
+
+    const hashedPassword = await bcrypt.hash(req.body.password,10)
     const user = await User.create({
         username:req.body.username,
-        password:req.body.password,
+        password:hashedPassword,
         firstName:req.body.firstName,
         lastName:req.body.lastName,
     })
@@ -56,7 +62,7 @@ export const signup = async (req:Request,res:Response) => {
             userId
         },env.JWT_SECRET);
 
-        res.json({
+        res.status(ResponseStatus.Success).json({
             message:"User created successfully!",
             token:token,
             balance:acc,
@@ -68,6 +74,7 @@ export const signup = async (req:Request,res:Response) => {
 //signin
 export const signin = async (req:Request,res:Response)=>{
     const {success} = signinBody.safeParse(req.body);
+   try {
     if(!success){
         return res.status(ResponseStatus.InputError).json({
             message:"Incorrect Inputs"
@@ -76,40 +83,76 @@ export const signin = async (req:Request,res:Response)=>{
 
     const user = await User.findOne({
         username:req.body.username,
-        password:req.body.password
-    });
+    }).select("+password");
 
-    if(user){
+    // if(user){
+    //     const token = jwt.sign({
+    //         userId:user._id
+    //     },env.JWT_SECRET);
+
+    //     res.cookie("token",token,{
+    //         httpOnly:true,
+    //         secure:true,
+    //         sameSite:"strict",
+    //     });
+
+    //     const isMatch = await bcrypt.compare(req.body.password,user.password)
+    //     return res.status(ResponseStatus.Success).json({
+    //         token:token,
+    //         message:"Login successful",
+    //     })
+       
+    // }
+    if(!user){
+        return res.status(ResponseStatus.Error).json({
+            message:"User not found"
+        });
+    }
+    
+    const isMatch = await bcrypt.compare(req.body.password,user.password);
+
+    if(isMatch){
         const token = jwt.sign({
-            userId:user._id
+            userId:user._id,
+          
         },env.JWT_SECRET);
-
-        res.json({
-            token:token
-        })
-        return;
+        res.cookie("token",token,{
+                    httpOnly:true,
+                    secure:true,
+                    sameSite:"none",
+                });
+                return res.status(ResponseStatus.Success).json({
+                            token:token,
+                            message:"Login successful",
+                        });
     }
 
+    return res.status(ResponseStatus.Error).json({
+        message:"Incorrect Password",
+    })
+   } catch (error) {
     res.status(ResponseStatus.Error).json({
         message:"Error while logging in!"
-    })
-}
+    });
+   }
+};
 
 //update
 export const update = async (req:Request,res:Response) =>{
     // const {firstName,lastName,password} = req.body;
+    console.log(req.user._id);
 try {
     const {success} = updateBody.safeParse(req.body);
     if(!success){
         res.status(ResponseStatus.Error).json({
-            message:"Error while updating information"
+            message:"Invalid Inputs"
         })
     }
-
+    const hashedPassword = await bcrypt.hash(req.body.password,10)
     const updatedUser = await User.findOneAndUpdate({
-        _id:req.userId
+        _id:req.user._id
     } ,
-    { firstName:req.body.firstName, lastName:req.body.lastName, password:req.body.password },{
+    { firstName:req.body.firstName, lastName:req.body.lastName, password:hashedPassword},{
         new:true
     }
     
@@ -145,12 +188,16 @@ export const bulkfilter = async (req:Request,res:Response) =>{
             lastName:{
                 "$regex":filter
             }
+        },{
+            username:{
+                "$regex":filter
+            }
         }]
     })
-
+        // console.log(users);
 
     res.status(ResponseStatus.Success).json({
-        user:users.map(user => ({
+        user:users.map((user) => ({
             username:user.username,
             firstName:user.firstName,
             lastName:user.lastName,
@@ -164,6 +211,7 @@ export const bulkfilter = async (req:Request,res:Response) =>{
     })
    }
 
+}
 // userRouter.delete("/deleteUser",authMiddleware,async(req:MyRequest,res:Response)=>{
 //     try {
 //         const user = await User.findOne({
@@ -189,4 +237,32 @@ export const bulkfilter = async (req:Request,res:Response) =>{
 //     }
 // })
 
-}
+
+export const logout = async(req:Request,res:Response) => {
+   
+    // const {username} = req.body;
+    // try {
+    //     res.status(ResponseStatus.Success).cookie("token","",{
+    //         expires:new Date(Date.now()),
+    //         sameSite:"strict",
+    //         secure:true,
+    //     }).json({
+    //         message:"Logout successful",
+    //         user:username,
+    //     })
+    // } catch (error) {
+    //     res.status(ResponseStatus.Error).json({
+    //         message:"Error Loggin out",
+    //     });
+    // }
+    try {
+        res.clearCookie("token").status(ResponseStatus.Success).json({
+            message:"Logout successful",
+        });
+
+    } catch (error) {
+        res.status(ResponseStatus.Error).json({
+            message:"Error Logging out",
+        })
+    }
+   }
