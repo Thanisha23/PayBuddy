@@ -20,6 +20,9 @@ dependencies:
   '@radix-ui/react-toast':
     specifier: ^1.1.5
     version: 1.1.5(@types/react-dom@18.2.18)(@types/react@18.2.48)(react-dom@18.2.0)(react@18.2.0)
+  '@types/react-icons':
+    specifier: ^3.0.0
+    version: 3.0.0(react@18.2.0)
   axios:
     specifier: ^1.6.7
     version: 1.6.7
@@ -41,6 +44,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.50.1
     version: 7.50.1(react@18.2.0)
+  react-icons:
+    specifier: ^5.0.1
+    version: 5.0.1(react@18.2.0)
   react-router-dom:
     specifier: ^6.22.0
     version: 6.22.0(react-dom@18.2.0)(react@18.2.0)
@@ -1404,6 +1410,15 @@ packages:
     dependencies:
       '@types/react': 18.2.48
 
+  /@types/react-icons@3.0.0(react@18.2.0):
+    resolution: {integrity: sha512-Vefs6LkLqF61vfV7AiAqls+vpR94q67gunhMueDznG+msAkrYgRxl7gYjNem/kZ+as2l2mNChmF1jRZzzQQtMg==}
+    deprecated: This is a stub types definition. react-icons provides its own type definitions, so you do not need this installed.
+    dependencies:
+      react-icons: 5.0.1(react@18.2.0)
+    transitivePeerDependencies:
+      - react
+    dev: false
+
   /@types/react@18.2.48:
     resolution: {integrity: sha512-qboRCl6Ie70DQQG9hhNREz81jqC1cs9EVNcjQ1AU+jH6NFfSAhVVbrrY/+nSF+Bsk4AOwm9Qa61InvMCyV+H3w==}
     dependencies:
@@ -2678,6 +2693,14 @@ packages:
     engines: {node: '>=12.22.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-icons@5.0.1(react@18.2.0):
+    resolution: {integrity: sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==}
+    peerDependencies:
+      react: '*'
     dependencies:
       react: 18.2.0
     dev: false

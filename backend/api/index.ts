@@ -1,8 +1,8 @@
 // Importing module 
 import express, { Request, Response } from 'express'; 
-import rootRouter  from "./routes/index"
+import rootRouter  from "../src/routes/index"
 import cors from "cors";
-import env from './utils/validateEnv'
+import env from '../src/utils/validateEnv'
 const cookieParser = require("cookie-parser");
 const app = express(); 
 // const PORT:Number=3000; 
