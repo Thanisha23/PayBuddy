@@ -6,6 +6,7 @@ const env = cleanEnv(process.env,{
     PORT:port(),
     MONGO_URL:str(),
     JWT_SECRET:str(),
+    FRONTEND_URL :str(),
 })
 
 export default env;
