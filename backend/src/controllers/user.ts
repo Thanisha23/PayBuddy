@@ -65,7 +65,7 @@ export const signup = async (req:Request,res:Response) => {
         res.status(ResponseStatus.Success).json({
             message:"User created successfully!",
             token:token,
-            balance:acc,
+            balance:acc.balance,
         })
 
 
@@ -256,7 +256,7 @@ export const logout = async(req:Request,res:Response) => {
     //     });
     // }
     try {
-        res.clearCookie("token").status(ResponseStatus.Success).json({
+        res.clearCookie("token", { sameSite: "none", secure: true }).status(ResponseStatus.Success).json({
             message:"Logout successful",
         });
 

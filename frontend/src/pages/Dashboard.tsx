@@ -42,7 +42,7 @@ useEffect(() => {
   useEffect(() => {
     async function fetchBalance(){
         try {
-            const response = await axiosInstance.get("api/v1/account/balance");
+            const response = await axiosInstance.get("/account/balance");
             setUserBalance(response.data.balance);
         } catch (error) {
             console.log("Error fetching");

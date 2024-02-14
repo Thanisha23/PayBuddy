@@ -40,7 +40,7 @@ const Update = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const response = await axiosInstance.put(
-        "/api/v1/user/update",
+        "/user/update",
         values,
         {
           headers: {

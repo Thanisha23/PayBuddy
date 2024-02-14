@@ -14,7 +14,7 @@ const {userId,username} = location.state || {};
 const handleTransfer = async() =>{
   try {
     const response = await axiosInstance.post(
-      "/api/v1/account/transfer",
+      "/account/transfer",
       {
         amount:transferData.amount,
         to:userId,

@@ -48,7 +48,7 @@ const form = useForm<z.infer<typeof formSchema>>({
   try {
 
     const response  = await axiosInstance.post(
-      "/api/v1/user/signup",
+      "/user/signup",
      values,
       {
         headers:{

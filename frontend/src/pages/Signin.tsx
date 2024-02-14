@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import axios from "axios"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -36,7 +35,7 @@ const form = useForm<z.infer<typeof formSchema>>({
 })
 async function logoutHandler(){
   try {
-    await axiosInstance.get("/api/v1/user/logout");
+    await axiosInstance.get("/user/logout");
     toast({
       description:"Logged out"
     })
@@ -50,8 +49,8 @@ async function logoutHandler(){
 }
 async function onSubmit(values: z.infer<typeof formSchema>) {
 try {
-    const response = await axios.post(
-      "http://localhost:3000/api/v1/user/signin",
+    const response = await axiosInstance.post(
+      "/user/signin",
       values,
       {
         headers:{
