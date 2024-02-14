@@ -15,6 +15,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/components/ui/use-toast"
 import { useNavigate } from "react-router-dom"
+import axiosInstance from "@/lib/axiosInstance"
 const formSchema = z.object({
   username: z.string().min(3, {
     message: "Invalid email",
@@ -36,12 +37,7 @@ const form = useForm<z.infer<typeof formSchema>>({
 })
 async function logoutHandler(){
   try {
-    await axios.get(
-      "http://localhost:3000/api/v1/user/logout",
-      {
-        withCredentials:true,
-      }
-    );
+    await axiosInstance.get("/api/v1/user/logout");
     toast({
       description:"Logged out"
     })

@@ -1,8 +1,8 @@
 // import { ModeToggle } from "@/components/mode-toggle";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import axiosInstance from "@/lib/axiosInstance";
 const SendMoney = () => {
 
 const [transferData,setTransferData] = useState({
@@ -13,15 +13,12 @@ const location = useLocation();
 const {userId,username} = location.state || {};
 const handleTransfer = async() =>{
   try {
-    const response = await axios.post(
-      "http://localhost:3000/api/v1/account/transfer",
+    const response = await axiosInstance.post(
+      "/api/v1/account/transfer",
       {
         amount:transferData.amount,
         to:userId,
       },
-      {
-        withCredentials:true,
-      }
     );
     console.log(response.data);
     setTransferData({

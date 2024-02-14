@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import axios from "axios"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -15,6 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { useToast } from "@/components/ui/use-toast"
+import axiosInstance from "@/lib/axiosInstance"
 
 
 const formSchema = z.object({
@@ -49,15 +49,15 @@ const form = useForm<z.infer<typeof formSchema>>({
 
   try {
 
-    const response  = await axios.post(
-      "http://localhost:3000/api/v1/user/signup",
+    const response  = await axiosInstance.post(
+      "/api/v1/user/signup",
      values,
       {
         headers:{
           "Content-Type":"application/json",
 
         },
-        withCredentials:true,
+     
       }
     )
     if(response.status === 200){

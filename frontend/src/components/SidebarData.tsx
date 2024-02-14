@@ -6,7 +6,7 @@ interface UserProfileProps {
    
   }
 
-// import axios from "axios";
+
 const SidebarData: React.FC<UserProfileProps> = ({toggle})=> {
 
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const SidebarData: React.FC<UserProfileProps> = ({toggle})=> {
 console.log("logged out");
   };
   return (
-    <div className="mb-[15rem]">
+    <div className="mb-[17rem]">
       {datas.map((data) => {
         return (
           <div
@@ -44,7 +44,7 @@ console.log("logged out");
       <button
         className={`${
         toggle ? "last:w-[3.6rem]" : "last:w-[17rem]"
-        } flex items-center mt-2 p-4 rounded-lg cursor-pointer hover:bg-white   text-white hover:text-black transition-all duration-300 absolute top-[31rem]`}
+        } flex items-center mt-2 p-4 rounded-lg cursor-pointer hover:bg-white   text-white hover:text-black transition-all duration-300 absolute top-[30rem]`}
         onClick={logoutHandler}
       >
         <div className="mr-8 text-[1.7rem]">

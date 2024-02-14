@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import axios from "axios";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
+import axiosInstance from "@/lib/axiosInstance";
 
 const formSchema = z.object({
   firstName: z.string().min(2, {
@@ -39,14 +39,14 @@ const Update = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const response = await axios.put(
-        "http://localhost:3000/api/v1/user/update",
+      const response = await axiosInstance.put(
+        "/api/v1/user/update",
         values,
         {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true,
+        
         }
       );
       if (response.status === 200) {

@@ -6,7 +6,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 // import { Home } from "lucide-react";
 import Home from "./pages/Home";
 import Update from "./pages/Update";
-import Balance from "./pages/Balance";
+
 const App = () => {
   return (
   <>
@@ -18,7 +18,6 @@ const App = () => {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/send" element={<SendMoney />} />
       <Route path="/update" element={<Update />} />
-      <Route path="/myBalance" element={<Balance />} />
       <Route path="/" element={<Home />} />
     </Routes>
     </BrowserRouter>
