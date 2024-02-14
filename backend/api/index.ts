@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 app.use(cors(
     {
-        origin: 'http://localhost:5173', // Replace with your frontend's origin
+        origin: 'https://pay-buddy-lilac.vercel.app/', // Replace with your frontend's origin
         methods: ['GET', 'POST','PUT'], // Specify the allowed HTTP methods
         allowedHeaders: ['Content-Type','Authorization'], // Specify the allowed headers
         credentials: true // Allow sending cookies from the frontend
