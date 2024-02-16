@@ -33,20 +33,7 @@ const form = useForm<z.infer<typeof formSchema>>({
     password:"",
   },
 })
-async function logoutHandler(){
-  try {
-    await axiosInstance.get("/user/logout");
-    toast({
-      description:"Logged out"
-    })
-    navigate("/");
-  } catch (error) {
-    toast({
-      description:"Error logging out"
-    })
-    
-  }
-}
+
 async function onSubmit(values: z.infer<typeof formSchema>) {
 try {
     const response = await axiosInstance.post(
@@ -116,9 +103,7 @@ console.log(error);
         <Button variant={"outline"} type="submit">Submit</Button>
         
       </form>
-      <Button variant={"outline"} onClick={()=>{
-      logoutHandler()
-    }} className="ml-7">Logout</Button>
+     
     </Form>
     </div>
     <div  className="hidden md:flex md:justify-center md:items-center md:w-[50%] w-[70%] mx-auto ">

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import UserCard from "@/components/UserCard";
 import Sidebar from "@/components/Sidebar";
 import axiosInstance from "@/lib/axiosInstance";
+
 const Dashboard = () => {
 
 interface User {
@@ -21,13 +22,13 @@ const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
 }
 
 useEffect(()=>{
-  axiosInstance.get(`/api/v1/user/bulk?filter=${filter}`).then(response => {
+  axiosInstance.get(`/user/bulk?filter=${filter}`).then(response => {
     setUsers(response.data.user)
   })
 },[])
 const handleSearch = async ()=>{
   try {
-    const response = await axiosInstance.get(`/api/v1/user/bulk?filter=${filter}`);
+    const response = await axiosInstance.get(`/user/bulk?filter=${filter}`);
     setUsers(response.data.user)
   } catch (error) {
     console.error("Error searching users",error);
@@ -50,6 +51,11 @@ useEffect(() => {
     }
     fetchBalance();
 },[])
+
+
+
+
+
   return (
    
    

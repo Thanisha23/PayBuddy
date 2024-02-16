@@ -1,6 +1,8 @@
 import { datas } from "./Data";
 import { FiLogOut } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import axiosInstance from "@/lib/axiosInstance";
+import { useToast } from "@/components/ui/use-toast"
+import { useNavigate } from "react-router-dom"
 interface UserProfileProps {
     toggle: boolean;
    
@@ -8,11 +10,22 @@ interface UserProfileProps {
 
 
 const SidebarData: React.FC<UserProfileProps> = ({toggle})=> {
-
   const navigate = useNavigate();
-  const logoutHandler = async () => {
-console.log("logged out");
-  };
+const {toast} = useToast();
+  async function logoutHandler(){
+    try {
+      await axiosInstance.get("/user/logout");
+      toast({
+        description:"Logged out"
+      })
+      navigate("/");
+    } catch (error) {
+      toast({
+        description:"Error logging out"
+      })
+      
+    }
+  }
   return (
     <div className="mb-[17rem]">
       {datas.map((data) => {
@@ -45,7 +58,9 @@ console.log("logged out");
         className={`${
         toggle ? "last:w-[3.6rem]" : "last:w-[17rem]"
         } flex items-center mt-2 p-4 rounded-lg cursor-pointer hover:bg-white   text-white hover:text-black transition-all duration-300 absolute top-[30rem]`}
-        onClick={logoutHandler}
+        onClick={()=>{
+          logoutHandler();
+        }}
       >
         <div className="mr-8 text-[1.7rem]">
           <FiLogOut />
