@@ -22,7 +22,7 @@ const Home = () => {
 </a>
 </div>
 </div>
-<div className="mr-[10rem]"><img className="h-[32rem] w-[32rem]" src="../../public/home-photo-4.1.png" alt="" /></div>
+<div className="mr-[10rem]"><img className="h-[32rem] w-[32rem]" src="./home-photo-4.1.png" alt="" /></div>
     {/* </div> */}
     </div>
     
