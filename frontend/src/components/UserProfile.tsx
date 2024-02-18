@@ -1,4 +1,4 @@
-import userimg from "../../public/paybuddy.png";
+import userimg from "/paybuddy.png";
 
 
 interface UserProfileProps {

@@ -108,7 +108,7 @@ console.log(error);
     </div>
   
     <div  className="hidden md:flex md:justify-center md:items-center md:w-[50%] w-[70%] bg-white">
-    <img className="w-full h-[35rem]" src="../../public/logo.png" alt="logo" />
+    <img className="w-full h-[35rem]" src="/logo.png" alt="logo" />
     </div>
     </div>
 
