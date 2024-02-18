@@ -27,7 +27,7 @@ const {toast} = useToast();
     }
   }
   return (
-    <div className="mb-[17rem]">
+    <div className="mb-[14rem]">
       {datas.map((data) => {
         return (
           <div
@@ -57,7 +57,7 @@ const {toast} = useToast();
       <button
         className={`${
         toggle ? "last:w-[3.6rem]" : "last:w-[17rem]"
-        } flex items-center mt-2 p-4 rounded-lg cursor-pointer hover:bg-white   text-white hover:text-black transition-all duration-300 absolute top-[30rem]`}
+        } flex items-center mt-2 p-4 rounded-lg cursor-pointer hover:bg-white   text-white hover:text-black transition-all duration-300 absolute top-[29rem]`}
         onClick={()=>{
           logoutHandler();
         }}

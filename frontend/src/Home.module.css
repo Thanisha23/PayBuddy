@@ -1,0 +1,10 @@
+/* YourComponent.css */
+
+.background-container {
+    background-image: url('./logo.png');
+    background-size: cover; /* Adjust to 'contain' or other values based on your preference */
+    background-position: center; /* Adjust based on your preference */
+    background-repeat: no-repeat;
+    /* Add other styling properties as needed */
+  }
+  
