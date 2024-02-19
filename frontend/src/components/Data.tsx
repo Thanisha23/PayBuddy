@@ -1,10 +1,9 @@
 import { RxDashboard } from "react-icons/rx";
-import { AiTwotoneFire } from "react-icons/ai";
-import { CiSaveDown2 } from "react-icons/ci";
-
+import { BsSend } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
-
 import { IoSettings } from "react-icons/io5";
+
+
 
 export const datas = [
   {
@@ -15,25 +14,19 @@ export const datas = [
   },
   {
     id: 2,
-    icon: <AiTwotoneFire />,
-    text: "Trending",
+    icon: <BsSend />,
+    text: "Transfer",
     navigateTo: "/trending",
   },
   {
     id: 3,
-    icon: <CiSaveDown2 />,
-    text: "Saved Posts",
-    navigateTo: "/mysavedposts",
-  },
-  {
-    id: 4,
     icon: <FaUser />,
     text: "My Profile",
     navigateTo: "/myprofile",
   },
 
   {
-    id: 6,
+    id: 4,
     icon: <IoSettings />,
     text: "Settings",
     navigateTo: "/mysettings",

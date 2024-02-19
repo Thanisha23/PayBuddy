@@ -26,6 +26,20 @@ export const getBalance = async (req: Request, res: Response) => {
     }
   }
 
+  export const userProfile = async (req:Request,res:Response) => {
+    try {
+      res.status(ResponseStatus.Success).json({
+        success:true,
+        user:req.user,
+      })
+    } catch (error) {
+      console.error("Error fetching user name:", error);
+      res.status(ResponseStatus.Error).json({
+        message: "Internal server error",
+      });
+    }
+  }
+
   export const transfer = async (req: Request, res: Response) => {
     //for atomic transaction we'll be doing the follows
     const session = await mongoose.startSession();

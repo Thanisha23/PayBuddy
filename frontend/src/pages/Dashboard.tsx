@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import UserCard from "@/components/UserCard";
 import Sidebar from "@/components/Sidebar";
 import axiosInstance from "@/lib/axiosInstance";
+import { CardStackDemo} from "@/components/ui/card";
 
 const Dashboard = () => {
 
@@ -61,9 +62,41 @@ useEffect(() => {
    
 
 
-<div className="mt-[2.5rem] grid grid-cols-4">
-<div className="col-span-1"><Sidebar /></div>
-<div className="col-span-3">
+<div className="my-[4rem] md:my-[5rem] h-screen flex justify-start items-start gap-11 relative">
+<div className=""><Sidebar /></div>
+<div className="flex flex-col justify-center items-center">
+  <div className="absolute">
+  <CardStackDemo />
+
+  </div>
+  <div className="bg-red-100 md:w-[26rem] h-[25rem] mt-[11rem]">ji</div>
+<div className="">  <div className="text-3xl font-bold"> `Your Balance is ${userBalance}`</div>
+  <div className="mt-[4rem]">
+ <div className="flex justify-center items-center gap-7">
+ <input className="text-black w-[14rem] h-[2.5rem] px-[1rem] rounded-md" type="text" value={filter} onChange={handleFilterChange} />
+  <Button onClick={handleSearch}>Search</Button>
+ </div>
+  <div className="flex flex-col gap-6 justify-center items-center mt-[3rem]">
+        {users.map((user) => (
+         <UserCard key={user._id} username={user.username} id={user._id}/>
+        ))}
+      </div>
+ </div></div>
+
+</div>
+</div>
+
+     
+    
+  )
+}
+
+export default Dashboard
+// ==========================================
+
+
+
+{/* <div className="">
   <div className="text-3xl font-bold"> `Your Balance is ${userBalance}`</div>
   <div className="mt-[4rem]">
  <div className="flex justify-center items-center gap-7">
@@ -76,15 +109,20 @@ useEffect(() => {
         ))}
       </div>
  </div>
-</div>
-</div>
+</div> */}
 
-     
-    
-  )
-}
 
-export default Dashboard
+
+
+
+
+
+
+
+
+
+
+// ======================================================
 {/* {users.map((user)=>
 
   <div key={user._id}>

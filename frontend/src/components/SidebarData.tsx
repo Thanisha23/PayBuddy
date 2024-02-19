@@ -56,8 +56,8 @@ const {toast} = useToast();
 
       <button
         className={`${
-        toggle ? "last:w-[3.6rem]" : "last:w-[17rem]"
-        } flex items-center mt-2 p-4 rounded-lg cursor-pointer hover:bg-white   text-white hover:text-black transition-all duration-300 absolute top-[29rem]`}
+        toggle ? "last:w-[3.6rem]" : "last:w-[16rem]"
+        } flex items-center mt-2 p-4 rounded-lg cursor-pointer hover:bg-white  text-white hover:text-black transition-all duration-300 absolute top-[25.5rem]`}
         onClick={()=>{
           logoutHandler();
         }}
