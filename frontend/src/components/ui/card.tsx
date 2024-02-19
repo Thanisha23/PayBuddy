@@ -7,7 +7,7 @@ export function CardStackDemo() {
     useEffect(() => {
         async function fetchBalance(){
             try {
-                const response = await axiosInstance.get("/account/balance");
+                const response = await axiosInstance.get("/account/userProfile");
                 // setUserBalance(response.data.balance);
                 console.log(response);
             } catch (error) {
