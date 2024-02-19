@@ -9,7 +9,7 @@ export function CardStackDemo() {
             try {
                 const response = await axiosInstance.get("/account/userProfile");
                 // setUserBalance(response.data.balance);
-                console.log(response);
+                console.log(response.data.user);
             } catch (error) {
                 console.log("Error fetching");
             }
