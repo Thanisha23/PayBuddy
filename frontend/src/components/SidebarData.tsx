@@ -39,10 +39,10 @@ const {toast} = useToast();
             } flex items-center mt-2 p-4 rounded-lg cursor-pointer hover:bg-white transition-all duration-300 last:absolute left-4 bottom-4 text-white hover:text-black`}
             key={data.id}
           >
-            <div className="mr-8 text-[1.7rem]">{data.icon}</div>
+            <div className="mr-8 text-[1.2rem] sm:text-[1.2rem] md:text-[1.7rem]">{data.icon}</div>
             <div
               className={`${ toggle ? "opacity-0 delay-200 " : ""
-              } text-[1rem] whitespace-pre`}
+              } text-[0.9rem] md:text-[1rem] whitespace-pre`}
             >
               {data.text}
             </div>
@@ -62,13 +62,13 @@ const {toast} = useToast();
           logoutHandler();
         }}
       >
-        <div className="mr-8 text-[1.7rem]">
+        <div className="mr-8 text-[1.2rem] sm:text-[1.2rem] md:text-[1.7rem]">
           <FiLogOut />
         </div>
         <div
           className={`${
             toggle ? "opacity-0 delay-200 " : ""
-          } text-[1rem] whitespace-pre`}
+          } ttext-[0.9rem] md:text-[1rem] whitespace-pre`}
         >
           Logout
         </div>

@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import UserCard from "@/components/UserCard";
 import Sidebar from "@/components/Sidebar";
 import axiosInstance from "@/lib/axiosInstance";
-import { CardStackDemo} from "@/components/ui/card";
+
+
 
 const Dashboard = () => {
 
@@ -17,7 +18,7 @@ interface User {
 const [filter,setFilter] = useState("");
 const [users,setUsers] = useState<User[]>([]);
 const [userBalance,setUserBalance] = useState(0);
-
+// const [userFname,setUserFname] = useState("");
 const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
   setFilter(e.target.value);
 }
@@ -53,23 +54,30 @@ useEffect(() => {
     fetchBalance();
 },[])
 
-
-
-
-
+useEffect(()=>{
+  async function fetchProfile(){
+    try {
+      const response = await axiosInstance.get("/account/userProfile");
+   console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  fetchProfile();
+},[])
   return (
-   
-   
-
-
-<div className="my-[4rem] md:my-[5rem] h-screen flex justify-start items-start gap-11 relative">
+<div className="my-[4rem] md:my-[5rem] h-screen flex justify-start items-start gap-8 md:gap-20">
 <div className=""><Sidebar /></div>
-<div className="flex flex-col justify-center items-center">
-  <div className="absolute">
-  <CardStackDemo />
+<div className="relative flex flex-col justify-center items-center">
+ 
+  <div className=" z-10 flex justify-center items-center md:w-[68rem] w-[19.5rem] h-[29rem] mt-[8rem] rounded-xl">
 
+  <div className="z-50 absolute w-[15rem] h-[18rem] rounded-xl border border-zinc-50/30 top-[1rem] bg-white opacity-20 text-black">
+   
+
+</div>
   </div>
-  <div className="bg-red-100 md:w-[26rem] h-[25rem] mt-[11rem]">ji</div>
+  
 <div className="">  <div className="text-3xl font-bold"> `Your Balance is ${userBalance}`</div>
   <div className="mt-[4rem]">
  <div className="flex justify-center items-center gap-7">
@@ -92,37 +100,6 @@ useEffect(() => {
 }
 
 export default Dashboard
-// ==========================================
-
-
-
-{/* <div className="">
-  <div className="text-3xl font-bold"> `Your Balance is ${userBalance}`</div>
-  <div className="mt-[4rem]">
- <div className="flex justify-center items-center gap-7">
- <input className="text-black w-[14rem] h-[2.5rem] px-[1rem] rounded-md" type="text" value={filter} onChange={handleFilterChange} />
-  <Button onClick={handleSearch}>Search</Button>
- </div>
-  <div className="flex flex-col gap-6 justify-center items-center mt-[3rem]">
-        {users.map((user) => (
-         <UserCard key={user._id} username={user.username} id={user._id}/>
-        ))}
-      </div>
- </div>
-</div> */}
-
-
-
-
-
-
-
-
-
-
-
-
-// ======================================================
 {/* {users.map((user)=>
 
   <div key={user._id}>
@@ -144,3 +121,18 @@ export default Dashboard
 
 
  {/* </div> */}
+
+//  <div className="">
+//   <div className="text-3xl font-bold"> `Your Balance is ${userBalance}`</div>
+//   <div className="mt-[4rem]">
+//  <div className="flex justify-center items-center gap-7">
+//  <input className="text-black w-[14rem] h-[2.5rem] px-[1rem] rounded-md" type="text" value={filter} onChange={handleFilterChange} />
+//   <Button onClick={handleSearch}>Search</Button>
+//  </div>
+//   <div className="flex flex-col gap-6 justify-center items-center mt-[3rem]">
+//         {users.map((user) => (
+//          <UserCard key={user._id} username={user.username} id={user._id}/>
+//         ))}
+//       </div>
+//  </div>
+// </div> 

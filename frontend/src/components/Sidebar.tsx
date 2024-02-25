@@ -8,7 +8,7 @@ const Sidebar = () => {
   <div>
     <div
       className={`${
-        toggle ? "w-[5.8rem]" : "w-[18rem]"
+        toggle ? "md:w-[5.8rem] w-[4.5rem]" : "md:w-[18rem]"
       } bg-transparent h-[94%] rounded-3xl ml-6 p-4 border transition-all duration-500 border-solid border-white relative`}
     >
       <UserProfile toggle={toggle} />

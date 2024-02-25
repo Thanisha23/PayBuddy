@@ -19,7 +19,7 @@ const UserProfile: React.FC<UserProfileProps> = ({toggle}) => {
         <img
           src={userimg}
           alt="user-img"
-          className="w-full h-full rounded-full object-cover"
+          className="w-[3.5rem] h-[3.5rem] rounded-full object-cover"
         />
       </div>
 
