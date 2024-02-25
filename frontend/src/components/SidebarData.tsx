@@ -1,8 +1,9 @@
 import { datas } from "./Data";
 import { FiLogOut } from "react-icons/fi";
 import axiosInstance from "@/lib/axiosInstance";
-import { useToast } from "@/components/ui/use-toast"
-import { useNavigate } from "react-router-dom"
+import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
+
 interface UserProfileProps {
     toggle: boolean;
    
