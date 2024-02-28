@@ -1,13 +1,10 @@
-
 import { useEffect, useState } from "react";
-
 import Sidebar from "@/components/Sidebar";
 import axiosInstance from "@/lib/axiosInstance";
-import { datas } from "@/components/Data";
-import { useNavigate } from "react-router-dom";
+import Navbar from "@/components/Navbar";
 const Dashboard = () => {
-  const navigate = useNavigate();
-  
+
+ 
 
   const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
@@ -56,42 +53,30 @@ const Dashboard = () => {
   }, []);
   return (
     <div>
-    <div className="mt-0 md:mt-[5rem] md:flex md:justify-start md:items-start flex justify-center items-center gap-0 md:gap-20">
+    <div className="mt-0 md:mt-[5rem] md:flex md:justify-start md:items-start flex justify-center items-center gap-0 md:gap-20 bg-[#F8F5CA] dark:bg-[#020817]">
       <div className="">
      {!isSmallScreen && (
          <Sidebar />
      )}
       </div>
       <div className="relative flex flex-col justify-center items-center ">
-        <div className="z-10 flex justify-center items-center md:w-[68rem] w-[19.5rem] h-[29rem] mt-[8rem] rounded-xl bg-white">
+        <div className="z-10 flex justify-center items-center md:w-[68rem] w-[19.5rem] h-[29rem] mt-[8rem] rounded-xl bg-white dark:bg-white">
           <div className="z-50 shadow-2xl absolute w-[15rem] h-[11rem] md:w-[25rem] md:h-[15rem] rounded-xl border border-zinc-50/30 top-[2rem] md:top-[1rem] bg-gray-400 bg-opacity-50 text-black transform rotate-10">
           <div className="p-4 pl-7 pr-7 flex justify-between items-center">
             <img className="bg-white rounded-full" width={30} height={25} src="/chip.png" alt="" />
             <div className="w-[2.5rem] h-[2.3rem] rounded-full bg-white"><img width={50} height={50} src="/logo-final.png" alt="" /></div></div>
             <div className="shadow-2xl pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{fname} {lname}</div>
-            <div className="text-gray-600 pl-10 md:pt-8 pt-2">Total Balance</div>
+            <div className="dark:text-gray-600 text-gray-800 pl-10 md:pt-8 pt-2">Total Balance</div>
             <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10"><h1>${userBalance.toFixed(2)}</h1></div>
           </div>
-          <div></div>
           </div>
-         
-
-{isSmallScreen && (
-         <div className="w-full bg-white mt-[2.5rem] h-[3.5rem] rounded-full p-4 text-blue-950 flex justify-center items-center gap-8">
-            {datas.map((data)=>{
-             return (
-              <div className="text-[1.9rem]" onClick={()=> {
-                navigate(data.navigateTo)
-              }} key={data.id}>{data.icon}</div>
-             )
-            })}
-          </div> 
-     )}
         </div>
-
-        
       </div>
-      
+      <div className="">
+      {isSmallScreen && (
+         <Navbar />
+     )}
+     </div>
     </div>
   );
 };
