@@ -8,6 +8,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 // import { Home } from "lucide-react";
 import Home from "./pages/Home";
 import Update from "./pages/Update";
+import MyProfile from "./pages/MyProfile";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
       <Route path="/update" element={<Update />} />
       <Route path="/transfer" element={<Transfer />} />
       <Route path="/mysettings" element={<Settings />} />
+      <Route path="/myprofile" element={<MyProfile />} />
       <Route path="/" element={<Home />} />
     </Routes>
     </BrowserRouter>

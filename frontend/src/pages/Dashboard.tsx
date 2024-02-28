@@ -52,7 +52,7 @@ const Dashboard = () => {
     fetchProfile();
   }, []);
   return (
-    <div>
+    <div className="relative">
     <div className="mt-0 md:mt-[5rem] md:flex md:justify-start md:items-start flex justify-center items-center gap-0 md:gap-20 bg-[#F8F5CA] dark:bg-[#020817]">
       <div className="">
      {!isSmallScreen && (
@@ -65,14 +65,14 @@ const Dashboard = () => {
           <div className="p-4 pl-7 pr-7 flex justify-between items-center">
             <img className="bg-white rounded-full" width={30} height={25} src="/chip.png" alt="" />
             <div className="w-[2.5rem] h-[2.3rem] rounded-full bg-white"><img width={50} height={50} src="/logo-final.png" alt="" /></div></div>
-            <div className="shadow-2xl pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{fname} {lname}</div>
+            <div className="pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{fname} {lname}</div>
             <div className="dark:text-gray-600 text-gray-800 pl-10 md:pt-8 pt-2">Total Balance</div>
             <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10"><h1>${userBalance.toFixed(2)}</h1></div>
           </div>
           </div>
         </div>
       </div>
-      <div className="">
+      <div className="fixed bottom-8 left-0 right-0">
       {isSmallScreen && (
          <Navbar />
      )}

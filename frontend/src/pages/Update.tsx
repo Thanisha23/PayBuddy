@@ -67,9 +67,9 @@ const Update = () => {
   }
 
   return (
-    <div className="my-[9rem] mx-auto md:w-[30%] w-[70%]">
+    <div className="my-[5rem] mx-auto md:w-[40rem] w-[18rem]">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-9">
           <FormField
             control={form.control}
             name="firstName"

@@ -38,7 +38,7 @@ const Settings = () => {
         }
       },[]);
   return (
-
+    <div className="relative">
     <div className="md:mx-0 bg-[#F8F5CA] dark:bg-[#020817] relative mx-[1rem]">
 
 
@@ -61,7 +61,14 @@ const Settings = () => {
         
     </div>
 
-    <Navbar />
+  
+    </div>
+
+    <div className="fixed bottom-8 left-0 right-0">
+      {isSmallScreen && (
+         <Navbar />
+     )}
+     </div>
     </div>
   )
 }
