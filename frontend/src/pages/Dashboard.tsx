@@ -1,6 +1,6 @@
-// import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-// import UserCard from "@/components/UserCard";
+import UserCard from "@/components/UserCard";
 import Sidebar from "@/components/Sidebar";
 import axiosInstance from "@/lib/axiosInstance";
 import { datas } from "@/components/Data";
@@ -92,9 +92,9 @@ const Dashboard = () => {
         <div className="z-10 flex justify-center items-center md:w-[68rem] w-[19.5rem] h-[29rem] mt-[8rem] rounded-xl bg-white">
           <div className="z-50 shadow-2xl absolute w-[15rem] h-[11rem] md:w-[25rem] md:h-[15rem] rounded-xl border border-zinc-50/30 top-[2rem] md:top-[1rem] bg-gray-400 bg-opacity-50 text-black transform rotate-10">
           <div className="p-4 pl-7 pr-7 flex justify-between items-center">
-            <img className="bg-white rounded-full" width={30} height={25} src="../../public/chip.png" alt="" />
-            <div className="w-[2.5rem] h-[2.3rem] rounded-full bg-white"><img width={50} height={50} src="../../public/logo-final.png" alt="" /></div></div>
-            <div className="pr-4 pt-1 pl-9 text-lg md:text-2xl  font-bold md:font-semibold text-[#020817]">Thanisha Belchada</div>
+            <img className="bg-white rounded-full" width={30} height={25} src="/chip.png" alt="" />
+            <div className="w-[2.5rem] h-[2.3rem] rounded-full bg-white"><img width={50} height={50} src="/logo-final.png" alt="" /></div></div>
+            <div className="pr-4 pt-1 pl-9 text-lg md:text-2xl  font-bold md:font-semibold text-[#020817]">`${fname} ${lname}`</div>
             <div className="text-gray-600 pl-10 pt-2">Total Balance</div>
             <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10 pt-2"><h1>${userBalance.toFixed(2)}</h1></div>
           </div>
@@ -109,7 +109,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* <div className="">
+        <div className="">
           {" "}
           <div className="text-3xl font-bold">
             {" "}
@@ -135,7 +135,7 @@ const Dashboard = () => {
               ))}
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
       
     </div>
