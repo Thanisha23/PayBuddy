@@ -1,16 +1,13 @@
-import { Button } from "@/components/ui/button";
+
 import { useEffect, useState } from "react";
-import UserCard from "@/components/UserCard";
+
 import Sidebar from "@/components/Sidebar";
 import axiosInstance from "@/lib/axiosInstance";
 import { datas } from "@/components/Data";
+import { useNavigate } from "react-router-dom";
 const Dashboard = () => {
-  interface User {
-    _id: string;
-    username: string;
-    firstName: string;
-    lastName: string;
-  }
+  const navigate = useNavigate();
+  
 
   const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
@@ -24,35 +21,12 @@ const Dashboard = () => {
       window.removeEventListener('resize',handleResize);
     }
   },[]);
-  const [filter, setFilter] = useState("");
-  const [users, setUsers] = useState<User[]>([]);
+  // const [filter, setFilter] = useState("");
+  // const [users, setUsers] = useState<User[]>([]);
   const [userBalance, setUserBalance] = useState(0);
-  const [fname,setFname] = useState("");
-  const [lname,setLname] = useState("");
+  const [fname,setFname] = useState("Thanisha");
+  const [lname,setLname] = useState("Belchada");
  
-  
-  // const [userFname,setUserFname] = useState("");
-  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFilter(e.target.value);
-  };
-
-  useEffect(() => {
-    axiosInstance.get(`/user/bulk?filter=${filter}`).then((response) => {
-      setUsers(response.data.user);
-    });
-  }, []);
-  const handleSearch = async () => {
-    try {
-      const response = await axiosInstance.get(`/user/bulk?filter=${filter}`);
-      setUsers(response.data.user);
-    } catch (error) {
-      console.error("Error searching users", error);
-    }
-  };
-
-  useEffect(() => {
-    handleSearch();
-  }, [filter]);
 
   useEffect(() => {
     async function fetchBalance() {
@@ -94,48 +68,28 @@ const Dashboard = () => {
           <div className="p-4 pl-7 pr-7 flex justify-between items-center">
             <img className="bg-white rounded-full" width={30} height={25} src="/chip.png" alt="" />
             <div className="w-[2.5rem] h-[2.3rem] rounded-full bg-white"><img width={50} height={50} src="/logo-final.png" alt="" /></div></div>
-            <div className="pr-4 pt-1 pl-9 text-lg md:text-2xl  font-bold md:font-semibold text-[#020817]">`${fname} ${lname}`</div>
-            <div className="text-gray-600 pl-10 pt-2">Total Balance</div>
-            <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10 pt-2"><h1>${userBalance.toFixed(2)}</h1></div>
+            <div className="shadow-2xl pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{fname} {lname}</div>
+            <div className="text-gray-600 pl-10 md:pt-8 pt-2">Total Balance</div>
+            <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10"><h1>${userBalance.toFixed(2)}</h1></div>
           </div>
           <div></div>
           </div>
-          <div className="w-full bg-white mt-[2.5rem] h-[3.5rem] rounded-full p-4 text-blue-950 flex justify-center items-center gap-8">
+         
+
+{isSmallScreen && (
+         <div className="w-full bg-white mt-[2.5rem] h-[3.5rem] rounded-full p-4 text-blue-950 flex justify-center items-center gap-8">
             {datas.map((data)=>{
              return (
-              <div className="text-[1.9rem]">{data.icon}</div>
+              <div className="text-[1.9rem]" onClick={()=> {
+                navigate(data.navigateTo)
+              }} key={data.id}>{data.icon}</div>
              )
             })}
-          </div>
+          </div> 
+     )}
         </div>
 
-        <div className="">
-          {" "}
-          <div className="text-3xl font-bold">
-            {" "}
-            `Your Balance is ${userBalance}`
-          </div>
-          <div className="mt-[4rem]">
-            <div className="flex justify-center items-center gap-7">
-              <input
-                className="text-black w-[14rem] h-[2.5rem] px-[1rem] rounded-md"
-                type="text"
-                value={filter}
-                onChange={handleFilterChange}
-              />
-              <Button onClick={handleSearch}>Search</Button>
-            </div>
-            <div className="flex flex-col gap-6 justify-center items-center mt-[3rem]">
-              {users.map((user) => (
-                <UserCard
-                  key={user._id}
-                  username={user.username}
-                  id={user._id}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+        
       </div>
       
     </div>
