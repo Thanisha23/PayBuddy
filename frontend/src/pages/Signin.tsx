@@ -67,8 +67,12 @@ console.log(error);
 }
   return (
     
-      <div className="my-[6rem] mx-auto  md:w-[60%] w-[85%] border border-zinc-50/30 rounded-lg flex justify-center items-center">
-        <div className="py-[1.5rem] md:pl-[1.5rem] md:w-[40%] w-[70%] mx-auto">
+      <div className="my-[3rem] md:my-[6.5rem] mx-auto  md:w-[60%] w-[85%] border md:border-zinc-50/30  border-x-transparent border-y-transparent  rounded-xl md:flex md:justify-center md:items-center ">
+        <div  className="md:flex md:justify-center md:items-center md:w-[50%] w-[100%] bg-white rounded-t-full md:rounded-sm">
+    <img className="mx-auto ml-3 md:h-[35rem]" src="/logo.png" alt="logo" />
+    
+    </div>
+        <div className="py-[2.5rem] md:pl-[1.5rem] md:w-[40%] w-[100%] md:px-0 px-[1.5rem] mx-auto border border-zinc-50/30 md:border-transparent">
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -107,9 +111,7 @@ console.log(error);
     </Form>
     </div>
   
-    <div  className="hidden md:flex md:justify-center md:items-center md:w-[50%] w-[70%] bg-white">
-    <img className="w-full h-[35rem]" src="/logo.png" alt="logo" />
-    </div>
+    
     </div>
 
   )

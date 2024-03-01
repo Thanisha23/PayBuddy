@@ -78,8 +78,11 @@ const form = useForm<z.infer<typeof formSchema>>({
   
 }
   return (
-    <div className="my-[6rem] mx-auto  md:w-[60%] w-[85%] border border-zinc-50/30 rounded-lg flex justify-center items-center">
-      <div className="py-[1.5rem] md:pl-[1.5rem] md:w-[40%] w-[70%] mx-auto">
+    <div className="md:my-[6rem] my-[3rem] mx-auto  md:w-[60%] w-[88%] border border-transparent rounded-lg md:flex md:justify-center md:items-center">
+       <div  className="md:flex md:justify-center md:items-center md:w-[50%] w-[100%] bg-white rounded-t-full md:rounded-sm  ">
+    <img className="w-full md:h-[35rem] pl-6" src="/logo.png" alt="logo" />
+    </div>
+      <div className="py-[1.5rem] md:pl-[1.5rem] md:w-[40%] w-[100%] mx-auto border border-zinc-50/30 px-[1.5rem]">
 
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -145,9 +148,7 @@ const form = useForm<z.infer<typeof formSchema>>({
   
     </div>
 
-    <div  className="hidden md:flex md:justify-center md:items-center md:w-[50%] w-[70%] bg-white">
-    <img className="w-full h-[35rem]" src="/logo.png" alt="logo" />
-    </div>
+   
     </div>
    
   )

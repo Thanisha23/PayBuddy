@@ -15,7 +15,7 @@ const UserCard: React.FC<UserCardProps> = ({username,id}) => {
         console.log(id);
     }
   return (
-    <div className="bg-blue-300 rounded-lg h-[3.5rem] w-[40rem] flex justify-between items-start gap-8 p-[0.5rem]">
+    <div className="bg-blue-300 rounded-lg h-[3.5rem] w-full px-[2rem] flex justify-between items-start gap-3 p-[0.5rem]">
     <h1 className="text-lg p-2">{username}</h1>
     <div className="">
     <Button onClick={()=>{

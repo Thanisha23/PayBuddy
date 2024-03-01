@@ -7,7 +7,7 @@ const Home = () => {
    <div className="bg-[#CECDB7] h-screen w-[100] relative">
     <div className="md:w-[4rem] w-[8rem] md:left-34 md:h-[4rem] h-[8rem]  absolute md:absolute md:left-10 md:top-9 top-40 left-0 right-0 md:mx-0 mx-auto"><img src="./logo-final.png" alt="logo" /></div>
     <div className="md:w-full flex justify-center items-center md:pt-[3rem] pt-[4rem]">
-      <div className={`${styles.logo} logo font-medium md:px-3 md:text-md px-3 md:py-2 py-[0.5rem] bg-[#32374A] rounded-3xl flex justify-center items-center  sm:gap-0 md:text-base text-sm`}>
+      <div className={`${styles.logo} logo font-medium md:px-3 md:text-md px-3 md:py-2 py-[0.5rem] bg-[#32374A] rounded-3xl flex justify-center items-center  sm:gap-0 md:text-base text-sm text-white`}>
       <h1 className ="md:px-2 px-[0.3rem] py-[0.1rem] hover:bg-white hover:text-[#32374A] hover:rounded-2xl">Home</h1>
       <h1 className="md:px-2 px-[0.3rem] py-[0.1rem] hover:bg-white hover:text-[#32374A] hover:rounded-2xl">About</h1>
       <h1 className="md:px-2 px-[0.3rem] py-[0.1rem] hover:bg-white hover:text-[#32374A] hover:rounded-2xl">Features</h1>
