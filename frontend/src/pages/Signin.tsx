@@ -36,6 +36,10 @@ const form = useForm<z.infer<typeof formSchema>>({
 
 async function onSubmit(values: z.infer<typeof formSchema>) {
 try {
+  toast({
+    description:"Loading...",
+   
+  })
     const response = await axiosInstance.post(
       "/user/signin",
       values,
@@ -104,7 +108,7 @@ console.log(error);
           )}
         />
          
-        <Button variant={"outline"} type="submit">Submit</Button>
+        <Button variant={"outline"} type="submit" disabled={form.formState.isSubmitting}>{form.formState.isSubmitting ? "Submitting..." : "Submit"}</Button>
        
       </form>
      

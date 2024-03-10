@@ -9,7 +9,7 @@ interface UserCardProps {
 
 const UserCard: React.FC<UserCardProps> = ({username,id}) => {
     const navigate = useNavigate();
-
+0
     function sendButtonHandler(id:string){
         navigate("/send",{state:{userId:id,username}});
         console.log(id);
