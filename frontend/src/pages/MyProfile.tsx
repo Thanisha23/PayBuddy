@@ -6,7 +6,7 @@ import axiosInstance from "@/lib/axiosInstance";
 const MyProfile = () => {
     const [fname,setFname] = useState("");
     const [lname,setLname] = useState("");
-    const [username,setUsername] = useState("thanishabelchada@gmail.com");
+    const [username,setUsername] = useState("");
     const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
 
@@ -56,7 +56,7 @@ const MyProfile = () => {
        {isSmallScreen && (
            <div className="flex justify-center items-center fixed top-12 mx-[1.5rem] left-0 right-0 gap-[1.3rem]">
             <div className="h-[4rem] w-[4rem] bg-white  rounded-full flex justify-center items-center">
-            <h1 className="text-black text-4xl">{fname? fname.slice(0,1): "loading.."}</h1>
+            <h1 className="text-black text-4xl">{fname? fname.slice(0,1): ""}</h1>
            </div>
            <div className="pt-[0.5rem]">
             <h1 className="text-xl font-bold">{fname} {lname}</h1>

@@ -19,9 +19,7 @@ interface UserProfileProps {
           console.log(error);
         }
       }
-      if (window.location.pathname === '/dashboard') {
-        fetchProfile();
-      }
+      fetchProfile();
     },[])
 
 
@@ -34,7 +32,7 @@ interface UserProfileProps {
       }`}
     >
       <div className="min-w-[3.5rem] h-[3.5rem] bg-white  px-auto flex justify-center items-center rounded-full">
-       <div className="text-black text-3xl"> {fname? fname.slice(0,1): "loading..."}</div>
+       <div className="text-black text-3xl"> {fname? fname.slice(0,1): ""}</div>
         {/* <img
           src={userimg}
           alt="user-img"

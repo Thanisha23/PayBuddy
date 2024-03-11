@@ -21,8 +21,8 @@ const Dashboard = () => {
   // const [filter, setFilter] = useState("");
   // const [users, setUsers] = useState<User[]>([]);
   const [userBalance, setUserBalance] = useState(0);
-  const [fname,setFname] = useState("Thanisha");
-  const [lname,setLname] = useState("Belchada");
+  const [fname,setFname] = useState("");
+  const [lname,setLname] = useState("");
  
 
   useEffect(() => {
