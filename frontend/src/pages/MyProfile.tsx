@@ -4,11 +4,28 @@ import { useState,useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import axiosInstance from "@/lib/axiosInstance";
 const MyProfile = () => {
-    const [fname,setFname] = useState("");
-    const [lname,setLname] = useState("");
-    const [username,setUsername] = useState("");
+    const [fname,setFname] = useState("Thanisha");
+    const [lname,setLname] = useState("Belchada");
+    const [username,setUsername] = useState("thanishabelchada@gmail.com");
     const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
+
+    useEffect(()=>{
+      async function fetchProfile(){
+        try {
+          const response = await axiosInstance.get("/account/userProfile");
+          setFname(response.data.firstName);
+          console.log(fname);
+          setLname(response.data.lastName);
+          console.log(lname);
+          setUsername(response.data.username);
+          console.log(username);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchProfile();
+    },[])
 
     useEffect(()=>{
         const handleResize = () => {
@@ -22,22 +39,6 @@ const MyProfile = () => {
       },[]);
 
 
-      useEffect(()=>{
-        async function fetchProfile(){
-          try {
-            const response = await axiosInstance.get("/account/userProfile");
-            setFname(response.data.firstName);
-            console.log(fname);
-            setLname(response.data.lastName);
-            console.log(lname);
-            setUsername(response.data.username);
-            console.log(username);
-          } catch (error) {
-            console.log(error);
-          }
-        }
-        fetchProfile();
-      },[])
   return (
     <div className="relative">
      

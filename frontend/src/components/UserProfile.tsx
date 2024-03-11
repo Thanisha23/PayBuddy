@@ -6,8 +6,8 @@ interface UserProfileProps {
    
   }
   const UserProfile: React.FC<UserProfileProps> = ({toggle}) => {
-    const [fname,setFname] = useState("");
-    const [username,setUsername] = useState("");
+    const [fname,setFname] = useState("Thanisha");
+    const [username,setUsername] = useState("thanishabelchada@gmail.com");
 
     useEffect(()=>{
       async function fetchProfile(){
