@@ -1,13 +1,12 @@
 // import { useEffect, useState } from "react";
 import { useState ,useEffect} from "react";
-import userimg from "/paybuddy.png";
 import axiosInstance from "@/lib/axiosInstance";
 interface UserProfileProps {
     toggle: boolean;
    
   }
   const UserProfile: React.FC<UserProfileProps> = ({toggle}) => {
-    const [fname,setFname] = useState("Thanisha");
+    const [fname,setFname] = useState("");
     const [username,setUsername] = useState("");
 
     useEffect(()=>{

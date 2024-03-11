@@ -67,7 +67,7 @@ const Update = () => {
   }
 
   return (
-    <div className="my-[5rem] mx-auto md:w-[40rem] w-[18rem]">
+    <div className="my-[2.5rem] mx-auto md:w-[40rem] w-[18rem]">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-9">
           <FormField
