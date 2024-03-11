@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import axiosInstance from "@/lib/axiosInstance";
 import Navbar from "@/components/Navbar";
+import { UserinfoContext } from "../../UserinfoContext";
 const Dashboard = () => {
 
- 
+ const {username,setUsername} = UserinfoContext()
 
   const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
@@ -44,7 +45,8 @@ const Dashboard = () => {
         console.log(response);
         setFname(response.data.user.firstName);
         setLname(response.data.user.lastName);
-       
+       setUsername(response.data.user.username);
+       console.log(`the username is ${username}`);
       } catch (error) {
         console.log(error);
       }

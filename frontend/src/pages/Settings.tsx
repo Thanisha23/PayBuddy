@@ -6,6 +6,7 @@ import { useState,useEffect } from "react";
 import axiosInstance from "@/lib/axiosInstance";
 import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
+
 const Settings = () => {
     const navigate = useNavigate();
     const {toast} = useToast();
