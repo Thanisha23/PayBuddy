@@ -14,7 +14,9 @@ interface UserProfileProps {
         try {
           const response = await axiosInstance.get("/account/userProfile");
           setFname(response.data.firstName);
+          console.log(fname);
           setUsername(response.data.username);
+          console.log(username);
         } catch (error) {
           console.log(error);
         }
