@@ -48,10 +48,10 @@ interface UserProfileProps {
       <div className={toggle ? "opacity-0 delay-200" : "text-white"}>
         <h3 className="text-xl">
           
-            <p className="username font-Lilita text-xl">{fname}</p>
+            <p className="username font-Lilita text-xl">{fname ? fname : "loading..." }</p>
        
         </h3>
-        <span className="text-[0.75rem] opacity-60 ">{username}</span>
+        <span className="text-[0.75rem] opacity-60 ">{username ? username : "loading..."}</span>
       </div>
     </div>
   );
