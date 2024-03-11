@@ -19,7 +19,9 @@ interface UserProfileProps {
           console.log(error);
         }
       }
-      fetchProfile();
+      if (window.location.pathname === '/dashboard') {
+        fetchProfile();
+      }
     },[])
 
 
