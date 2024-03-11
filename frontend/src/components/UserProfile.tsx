@@ -6,17 +6,17 @@ interface UserProfileProps {
    
   }
   const UserProfile: React.FC<UserProfileProps> = ({toggle}) => {
-    const [fname,setFname] = useState("Thanisha");
-    const [username,setUsername] = useState("thanishabelchada@gmail.com");
+    const [fname,setFname] = useState("");
+    const [username,setUsername] = useState("");
 
     useEffect(()=>{
       async function fetchProfile(){
         try {
           const response = await axiosInstance.get("/account/userProfile");
-          setFname(response.data.firstName);
-          console.log(fname);
-          setUsername(response.data.username);
-          console.log(username);
+          setFname(response.data.user.firstName);
+        
+          setUsername(response.data.user.username);
+         
         } catch (error) {
           console.log(error);
         }

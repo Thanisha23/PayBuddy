@@ -4,9 +4,9 @@ import { useState,useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import axiosInstance from "@/lib/axiosInstance";
 const MyProfile = () => {
-    const [fname,setFname] = useState("Thanisha");
-    const [lname,setLname] = useState("Belchada");
-    const [username,setUsername] = useState("thanishabelchada@gmail.com");
+    const [fname,setFname] = useState("");
+    const [lname,setLname] = useState("");
+    const [username,setUsername] = useState("");
     const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
 
@@ -14,11 +14,11 @@ const MyProfile = () => {
       async function fetchProfile(){
         try {
           const response = await axiosInstance.get("/account/userProfile");
-          setFname(response.data.firstName);
+          setFname(response.data.user.firstName);
           console.log(fname);
-          setLname(response.data.lastName);
+          setLname(response.data.user.lastName);
           console.log(lname);
-          setUsername(response.data.username);
+          setUsername(response.data.user.username);
           console.log(username);
         } catch (error) {
           console.log(error);
