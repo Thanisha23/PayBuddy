@@ -9,10 +9,11 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Home from "./pages/Home";
 import Update from "./pages/Update";
 import MyProfile from "./pages/MyProfile";
-
+import UserProvider from "./components/context/UserContext";
 const App = () => {
   return (
   <>
+  <UserProvider>
     <BrowserRouter>
     <Routes>
 
@@ -27,6 +28,7 @@ const App = () => {
       <Route path="/" element={<Home />} />
     </Routes>
     </BrowserRouter>
+    </UserProvider>
   </>
   )
 }
