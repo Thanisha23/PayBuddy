@@ -1,30 +1,30 @@
 // import { useEffect, useState } from "react";
-import { useState ,useEffect} from "react";
+import { useContext} from "react";
+import { UserContext } from "./context/UserContext";
 
-import axiosInstance from "@/lib/axiosInstance";
 interface UserProfileProps {
     toggle: boolean;
    
   }
   const UserProfile: React.FC<UserProfileProps> = ({toggle}) => {
  
-    const [fname,setFname] = useState("");
-    const [username,setUsername] = useState("");
-
-    useEffect(()=>{
-      async function fetchProfile(){
-        try {
-          const response = await axiosInstance.get("/account/userProfile");
-          setFname(response.data.user.firstName);
+    // const [fname,setFname] = useState("");
+    // const [username,setUsername] = useState("");
+    const {user} = useContext(UserContext);
+    // useEffect(()=>{
+    //   async function fetchProfile(){
+    //     try {
+    //       const response = await axiosInstance.get("/account/userProfile");
+    //       setFname(response.data.user.firstName);
         
-          setUsername(response.data.user.username);
+    //       setUsername(response.data.user.username);
          
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      fetchProfile();
-    },[])
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
+    //   fetchProfile();
+    // },[])
 
 
   return (
@@ -36,7 +36,7 @@ interface UserProfileProps {
       }`}
     >
       <div className="min-w-[3.5rem] h-[3.5rem] bg-white  px-auto flex justify-center items-center rounded-full">
-       <div className="text-black text-3xl"> {fname? fname.slice(0,1): ""}</div>
+       <div className="text-black text-3xl"> {user.firstName? user.firstName.slice(0,1): ""}</div>
         {/* <img
           src={userimg}
           alt="user-img"
@@ -50,10 +50,10 @@ interface UserProfileProps {
       <div className={toggle ? "opacity-0 delay-200" : "text-white"}>
         <h3 className="text-xl">
           
-            <p className="username font-Lilita text-xl">{fname ? fname : "loading..." }</p>
+            <p className="username font-Lilita text-xl">{user.firstName ? user.firstName : "loading..." }</p>
        
         </h3>
-        <span className="text-[0.75rem] opacity-60 ">{username ? username : "loading..."}</span>
+        <span className="text-[0.75rem] opacity-60 ">{user.username ? user.username : "loading..."}</span>
       </div>
     </div>
   );

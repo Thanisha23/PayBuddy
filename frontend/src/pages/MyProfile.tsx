@@ -1,31 +1,32 @@
 import Sidebar from "@/components/Sidebar"
 import Update from "@/pages/Update"
-import { useState,useEffect } from "react";
+import { useState,useEffect, useContext } from "react";
 import Navbar from "@/components/Navbar";
-import axiosInstance from "@/lib/axiosInstance";
+import { UserContext } from "@/components/context/UserContext";
 const MyProfile = () => {
-    const [fname,setFname] = useState("");
-    const [lname,setLname] = useState("");
-    const [username,setUsername] = useState("");
+  const {user} = useContext(UserContext);
+    // const [fname,setFname] = useState("");
+    // const [lname,setLname] = useState("");
+    // const [username,setUsername] = useState("");
     const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
 
-    useEffect(()=>{
-      async function fetchProfile(){
-        try {
-          const response = await axiosInstance.get("/account/userProfile");
-          setFname(response.data.user.firstName);
-          console.log(fname);
-          setLname(response.data.user.lastName);
-          console.log(lname);
-          setUsername(response.data.user.username);
-          console.log(username);
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      fetchProfile();
-    },[])
+    // useEffect(()=>{
+    //   async function fetchProfile(){
+    //     try {
+    //       const response = await axiosInstance.get("/account/userProfile");
+    //       setFname(response.data.user.firstName);
+    //       console.log(fname);
+    //       setLname(response.data.user.lastName);
+    //       console.log(lname);
+    //       setUsername(response.data.user.username);
+    //       console.log(username);
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    //   }
+    //   fetchProfile();
+    // },[])
 
     useEffect(()=>{
         const handleResize = () => {
@@ -60,11 +61,11 @@ const MyProfile = () => {
        {isSmallScreen && (
            <div className="flex justify-center items-center fixed top-12 mx-[1.5rem] left-0 right-0 gap-[1.3rem]">
             <div className="h-[4rem] w-[4rem] bg-white  rounded-full flex justify-center items-center">
-            <h1 className="text-black text-4xl">{fname? fname.slice(0,1): ""}</h1>
+            <h1 className="text-black text-4xl">{user.firstName? user.firstName.slice(0,1): ""}</h1>
            </div>
            <div className="pt-[0.5rem]">
-            <h1 className="text-xl font-bold">{fname} {lname}</h1>
-            <h3 className="pt-[0.3rem] text-gray-500">{username}</h3></div>
+            <h1 className="text-xl font-bold">{user.firstName} {user.lastName}</h1>
+            <h3 className="pt-[0.3rem] text-gray-500">{user.username}</h3></div>
            </div>
        )}
         <div className="fixed bottom-8 left-0 right-0">
