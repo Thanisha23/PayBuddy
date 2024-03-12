@@ -34,7 +34,7 @@ const Transfer = () => {
       const handleSearch = async () => {
         try {
           const response = await axiosInstance.get(`/user/bulk?filter=${filter}`);
-          setUsers(response.data.user);
+          {filter && setUsers(response.data.user)}
         } catch (error) {
           console.error("Error searching users", error);
         }
