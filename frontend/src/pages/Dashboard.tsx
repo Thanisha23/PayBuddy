@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import axiosInstance from "@/lib/axiosInstance";
 import Navbar from "@/components/Navbar";
-import { UserinfoContext } from "../../UserinfoContext";
+import UserProvider,{UserContext} from "@/components/context/UserContext";
 const Dashboard = () => {
 
- const {username,setUsername} = UserinfoContext()
+ const {user,setUser} = useContext(UserContext);
 
   const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
@@ -22,8 +22,8 @@ const Dashboard = () => {
   // const [filter, setFilter] = useState("");
   // const [users, setUsers] = useState<User[]>([]);
   const [userBalance, setUserBalance] = useState(0);
-  const [fname,setFname] = useState("");
-  const [lname,setLname] = useState("");
+  // const [fname,setFname] = useState("");
+  // const [lname,setLname] = useState("");
  
 
   useEffect(() => {
@@ -43,10 +43,15 @@ const Dashboard = () => {
       try {
         const response = await axiosInstance.get("/account/userProfile");
         console.log(response);
-        setFname(response.data.user.firstName);
-        setLname(response.data.user.lastName);
-       setUsername(response.data.user.username);
-       console.log(`the username is ${username}`);
+        // setFname(response.data.user.firstName);
+        // setLname(response.data.user.lastName);
+
+        setUser({
+          firstName:response.data.user.firstName,
+          lastName:response.data.user.lastName,
+          username:response.data.user.username
+        })
+      
       } catch (error) {
         console.log(error);
       }
@@ -54,6 +59,7 @@ const Dashboard = () => {
     fetchProfile();
   }, []);
   return (
+    <UserProvider>
     <div className="relative">
     <div className="mt-0 md:mt-[5rem] md:flex md:justify-start md:items-start flex justify-center items-center gap-0 md:gap-20 bg-[#F8F5CA] dark:bg-[#020817]">
       <div className="">
@@ -67,7 +73,8 @@ const Dashboard = () => {
           <div className="p-4 pl-7 pr-7 flex justify-between items-center">
             <img className="bg-white rounded-full" width={30} height={25} src="/chip.png" alt="" />
             <div className="w-[2.5rem] h-[2.3rem] rounded-full bg-white"><img width={50} height={50} src="/logo-final.png" alt="" /></div></div>
-            <div className="pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{fname} {lname}</div>
+            {/* <div className="pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{fname} {lname}</div> */}
+            <div className="pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{user.firstName} {user.lastName}</div>
             <div className="dark:text-gray-600 text-gray-800 pl-10 md:pt-8 pt-2">Total Balance</div>
             <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10"><h1>${userBalance.toFixed(2)}</h1></div>
           </div>
@@ -80,6 +87,7 @@ const Dashboard = () => {
      )}
      </div>
     </div>
+    </UserProvider>
   );
 };
 
