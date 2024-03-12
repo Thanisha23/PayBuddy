@@ -5,28 +5,11 @@ import Navbar from "@/components/Navbar";
 import { UserContext } from "@/components/context/UserContext";
 const MyProfile = () => {
   const {user} = useContext(UserContext);
-    // const [fname,setFname] = useState("");
-    // const [lname,setLname] = useState("");
-    // const [username,setUsername] = useState("");
+    
     const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
 
-    // useEffect(()=>{
-    //   async function fetchProfile(){
-    //     try {
-    //       const response = await axiosInstance.get("/account/userProfile");
-    //       setFname(response.data.user.firstName);
-    //       console.log(fname);
-    //       setLname(response.data.user.lastName);
-    //       console.log(lname);
-    //       setUsername(response.data.user.username);
-    //       console.log(username);
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   }
-    //   fetchProfile();
-    // },[])
+ 
 
     useEffect(()=>{
         const handleResize = () => {

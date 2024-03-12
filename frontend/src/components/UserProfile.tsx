@@ -8,23 +8,8 @@ interface UserProfileProps {
   }
   const UserProfile: React.FC<UserProfileProps> = ({toggle}) => {
  
-    // const [fname,setFname] = useState("");
-    // const [username,setUsername] = useState("");
     const {user} = useContext(UserContext);
-    // useEffect(()=>{
-    //   async function fetchProfile(){
-    //     try {
-    //       const response = await axiosInstance.get("/account/userProfile");
-    //       setFname(response.data.user.firstName);
-        
-    //       setUsername(response.data.user.username);
-         
-    //     } catch (error) {
-    //       console.log(error);
-    //     }
-    //   }
-    //   fetchProfile();
-    // },[])
+  
 
 
   return (
@@ -45,8 +30,6 @@ interface UserProfileProps {
 
       </div>
 
-      {/* <div className={`${props.toggle ? "text-black" : "text-white"}`}
-          > */}
       <div className={toggle ? "opacity-0 delay-200" : "text-white"}>
         <h3 className="text-xl">
           

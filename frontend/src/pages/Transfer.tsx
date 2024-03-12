@@ -29,11 +29,11 @@ const Transfer = () => {
     const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFilter(e.target.value);
       };
-      useEffect(() => {
-        axiosInstance.get(`/user/bulk?filter=${filter}`).then((response) => {
-          setUsers(response.data.user);
-        });
-      }, []);
+      // useEffect(() => {
+      //   axiosInstance.get(`/user/bulk?filter=${filter}`).then((response) => {
+      //     setUsers(response.data.user);
+      //   });
+      // }, []);
 
       const handleSearch = async () => {
         try {
