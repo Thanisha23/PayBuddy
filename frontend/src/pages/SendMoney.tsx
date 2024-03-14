@@ -10,6 +10,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import Tick from '../../tick.json';
 import Lottie from 'lottie-react';
 const SendMoney = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const {user} = useContext(UserContext);
   const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 const [transferData,setTransferData] = useState({
@@ -27,12 +28,13 @@ const handleTransfer = async() =>{
         to:userId,
       },
     );
-    <Lottie animationData={Tick} />
+
     console.log(response.data);
     setTransferData({
       amount:0,
       to:"",
-    })
+    });
+    setIsModalOpen(true);
   } catch (error) {
     console.error("Error transferring money",error);
   }
@@ -48,9 +50,39 @@ useEffect(()=>{
     window.removeEventListener('resize',handleResize);
   }
 },[]);
- 
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+
+const handleClickOutsideModal = (event: MouseEvent) => {
+  const modal = document.getElementById('modal');
+  if (modal && !modal.contains(event.target as Node)) {
+    setIsModalOpen(false);
+  }
+};
+
+useEffect(() => {
+  if (isModalOpen) {
+    document.addEventListener('mousedown', handleClickOutsideModal);
+  } else {
+    document.removeEventListener('mousedown', handleClickOutsideModal);
+  }
+
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutsideModal);
+  };
+}, [isModalOpen]);
   return (
     <div className="relative font-roboto">
+       {isModalOpen && (
+        <div id="modal" className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg">
+            <Lottie animationData={Tick} />
+            <p>Money transferred successfully!</p>
+            <button onClick={closeModal}>Close</button>
+          </div>
+        </div>
+      )}
     <div className="mt-0 md:mt-[5rem] md:flex md:justify-start md:items-start flex justify-center items-center gap-0 md:gap-60 bg-[#F8F5CA] dark:bg-[#020817]">
     <div className="">
    {!isSmallScreen && (
