@@ -75,8 +75,8 @@ useEffect(() => {
   return (
     <div className="relative font-roboto">
        {isModalOpen && (
-        <div id="modal" className="w-[15rem] h-[15rem] fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white p-8 rounded-lg">
+        <div id="modal" className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white p-8 w-[15rem] h-[15rem]  rounded-lg">
             <Lottie animationData={Tick} />
             <p>Money transferred successfully!</p>
             <button onClick={closeModal}>Close</button>
@@ -121,7 +121,7 @@ useEffect(() => {
                 type="number" placeholder="Enter amount" value={transferData.amount === 0 ? '' : transferData.amount} onChange={(e)=>{
                   setTransferData({...transferData,amount:Number(e.target.value)})
                 }} />
-               <span className="absolute text-black text-xl top-[6.4rem] right-[5.5rem] ">₹</span>
+               <span className="absolute text-black text-xl top-[6.4rem] right-[5.5rem] md:right-[15.5rem]">₹</span>
       </div>
       <div className="pl-4 mt-8">
       <Button variant={"outline"} onClick={handleTransfer}>Transfer Money</Button>
