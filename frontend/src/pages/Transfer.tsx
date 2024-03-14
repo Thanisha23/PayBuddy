@@ -72,7 +72,7 @@ const Transfer = () => {
               {/* <Button onClick={handleSearch}>Search</Button> */}
             </div>
             <div className="flex flex-col gap-6 justify-center items-center mt-[1rem] md:px-12 px-6">
-              {users.map((user) => (
+              {/* {users.map((user) => (
                 <UserCard
                   key={user._id}
                   username={user.username}
@@ -80,8 +80,14 @@ const Transfer = () => {
                   firstName={user.firstName}
                   lastName={user.lastName}
                 />
-              ))}
-             
+              ))} */}
+               <UserCard
+                  key={1}
+                  username="thanisha@gmail.com"
+                  id="165454"
+                  firstName="Thanisha"
+                  lastName="Belchada"
+                />
             </div>
           </div>
         </div>
