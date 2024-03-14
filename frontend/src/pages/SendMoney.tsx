@@ -7,6 +7,8 @@ import { UserContext } from "@/components/context/UserContext";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import { FaArrowRight } from "react-icons/fa6";
+import Tick from '../../tick.json';
+import Lottie from 'lottie-react';
 const SendMoney = () => {
   const {user} = useContext(UserContext);
   const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
@@ -25,6 +27,7 @@ const handleTransfer = async() =>{
         to:userId,
       },
     );
+    <Lottie animationData={Tick} />
     console.log(response.data);
     setTransferData({
       amount:0,
