@@ -72,7 +72,8 @@ const Transfer = () => {
               {/* <Button onClick={handleSearch}>Search</Button> */}
             </div>
             <div className="flex flex-col gap-6 justify-center items-center mt-[1rem] md:px-12 px-6">
-              {users.map((user) => (
+              {filter.length > 0 && 
+              users.map((user) => (
                 <UserCard
                   key={user._id}
                   username={user.username}
