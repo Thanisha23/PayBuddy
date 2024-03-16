@@ -62,7 +62,11 @@ export const signup = async (req:Request,res:Response) => {
             userId
         },env.JWT_SECRET);
 
-        res.status(ResponseStatus.Success).json({
+        res.cookie("token",token,{
+            httpOnly:true,
+            secure:true,
+            sameSite:"none",
+        }).status(ResponseStatus.Success).json({
             message:"User created successfully!",
             token:token,
             balance:acc.balance,
