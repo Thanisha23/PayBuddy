@@ -2,6 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom"
 import {
   Form,
   FormControl,
@@ -31,6 +32,7 @@ const formSchema = z.object({
 })
 
 const Signup = () => {
+  const navigate = useNavigate();
   const {toast} = useToast();
 // 1. Define your form.
 const form = useForm<z.infer<typeof formSchema>>({
@@ -65,7 +67,7 @@ const form = useForm<z.infer<typeof formSchema>>({
       toast({
         description:"Signup successful"
       });
-      form.reset();
+      navigate("/dashboard")
     }else{
       toast({
         description:"Signup Failed"
@@ -81,12 +83,18 @@ const form = useForm<z.infer<typeof formSchema>>({
   
 }
   return (
-    <div className="md:my-[6rem] my-[3rem] mx-auto  md:w-[60%] w-[88%] border border-transparent rounded-lg md:flex md:justify-center md:items-center">
+    <div className="font-roboto md:my-[5rem] my-[3rem] mx-auto  md:w-[73%] w-[88%] border md:border-zinc-50/30  border-x-transparent border-y-transparent rounded-lg md:flex md:justify-center md:items-center">
        <div  className="md:flex md:justify-center md:items-center md:w-[50%] w-[100%] bg-white rounded-t-full md:rounded-sm  ">
-    <img className="w-full md:h-[35rem] pl-6" src="/logo.png" alt="logo" />
+    <img className="w-full md:h-[37.2rem] pl-6" src="/logo.png" alt="logo" />
     </div>
-      <div className="py-[1.5rem] md:pl-[1.5rem] md:w-[40%] w-[100%] mx-auto border border-zinc-50/30 px-[1.5rem]">
+      <div className="py-[1rem] md:pl-[0.8rem] md:w-[43%] w-[100%] mx-auto border md:border-transparent border-zinc-50/30 ">
 
+      <div className="flex justify-center items-center px-1 gap-x-[5rem] md:gap-[14rem] mb-6 md:px-0 px-">
+            <h1 className="font-semibold md:font-bold md:text-xl pr-1 md:w-[6rem] w-[5rem] text-left leading-6">Signup to PayBuddy</h1>
+           <div className="leading-6"> <h2><span className="text-[0.8rem] text-gray-300/50">Already a member?</span></h2>
+            <h2 className="font-medium text-xs text-right"><a href="/signin">Log in here</a></h2></div>
+          </div>
+      <div className=" px-[1.5rem] md:px-[0.5rem] py-2">
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
@@ -148,6 +156,7 @@ const form = useForm<z.infer<typeof formSchema>>({
         <Button variant={"outline"} type="submit" disabled={form.formState.isSubmitting}>{form.formState.isSubmitting ? "Submitting..." : "Submit"}</Button>
       </form>
     </Form>
+      </div>
   
     </div>
 

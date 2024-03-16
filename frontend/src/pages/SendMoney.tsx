@@ -76,7 +76,7 @@ useEffect(() => {
     <div className="relative font-roboto">
        {isModalOpen && (
         <div id="modal" className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white p-8 w-[15rem] h-[15rem]  rounded-lg">
+          <div className="bg-white p-8 w-[35rem] h-[35rem] rounded-lg">
             <Lottie animationData={Tick} />
             <p>Money transferred successfully!</p>
             <button onClick={closeModal}>Close</button>

@@ -71,13 +71,18 @@ console.log(error);
 }
   return (
     
-      <div className="my-[3rem] md:my-[6.5rem] mx-auto  md:w-[60%] w-[85%] border md:border-zinc-50/30  border-x-transparent border-y-transparent  rounded-xl md:flex md:justify-center md:items-center ">
+      <div className="my-[3rem] md:my-[5rem] mx-auto  md:w-[70%] w-[85%] border md:border-zinc-50/30  border-x-transparent border-y-transparent  rounded-xl md:flex md:justify-center md:items-center ">
         <div  className="md:flex md:justify-center md:items-center md:w-[50%] w-[100%] bg-white rounded-t-full md:rounded-sm">
     <img className="mx-auto ml-3 md:h-[35rem]" src="/logo.png" alt="logo" />
     
     </div>
-        <div className="py-[2.5rem] md:pl-[1.5rem] md:w-[40%] w-[100%] md:px-0 px-[1.5rem] mx-auto border border-zinc-50/30 md:border-transparent">
-      <Form {...form}>
+        <div className="md:py-[1rem] py-[4rem] md:pl-[0.8rem] md:w-[43%] w-[100%] mx-auto border md:border-transparent border-zinc-50/30 relative">
+       
+            <h1 className="font-medium md:font-bold md:text-xl md:w-[14rem] w-[8rem] text-left leading-6 absolute md: md:left-1 bottom-[21rem] left-4">Welcome back to PayBuddy!</h1>
+           <div className="leading-6 absolute md:bottom-[20.8rem] md:right-1 right-4 md: bottom-[20.3rem]"> <h2 className="text-[0.8rem] text-gray-300/50 text-center w-[5rem] leading-4">Don't have an account?</h2>
+            <h2 className="font-medium text-xs text-center pt-2"><a href="/signup">Signup here</a></h2></div>
+          
+      <div className="md:px-0 px-[1.5rem] md:pt-0 pt-8"><Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
@@ -112,7 +117,7 @@ console.log(error);
        
       </form>
      
-    </Form>
+    </Form></div>
     </div>
   
     
