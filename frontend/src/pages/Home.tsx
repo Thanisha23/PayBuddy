@@ -1,18 +1,26 @@
 import { Button } from "@/components/ui/button"
-
+import { CiHome } from "react-icons/ci";
+import { CiViewBoard } from "react-icons/ci";
+import { CiUser } from "react-icons/ci";
 const Home = () => {
   return (
     
   //  <div className="bg-[#CECDB7] h-screen w-[100] relative">
    <div className="bg-[white] mx-[2rem]  dark:bg-[#020817] h-screen w-[100] relative font-roboto">
-    <div className="block md:hidden md:w-[4rem] dark:bg-white dark:rounded-full dark:h-[4rem] w-[8rem] md:left-34 md:h-[4rem] h-[8rem]  absolute md:absolute md:left-10 md:top-9 top-56 left-0 right-0 md:mx-0 mx-auto pt-1"><img src="./logo-final.png" alt="logo" /></div>
+    <div className=" md:w-[4rem] dark:bg-white dark:rounded-full dark:h-[4rem] w-[8rem] md:left-34 md:h-[4rem] h-[8rem]  absolute md:left-10 md:top-9 top-56 left-0 right-0 md:mx-0 mx-auto pt-1"><img src="./finalLogo.jpeg" alt="logo" /></div>
     
-    <div className="md:w-full gap-[14rem] flex justify-center items-center md:pt-[3rem] pt-[4rem] md:pl-[25rem]">
-      <div className={`border border-[#32374A] dark:border-white font-semibold md:text-lg text-base  md:py-1 md:pt-2 rounded-full py-[0.5rem] flex justify-center items-center gap-5 md:gap-9 px-6 text-[#32374A] dark:text-white`}>
-        <h1 className="pb-1  hover:underline">Home</h1>
-        <h1 className="pb-1  hover:underline">About</h1>
-        <h1 className="pb-1  hover:underline">Features</h1>
-        <h1 className="pb-1  hover:underline">Contact</h1>
+    <div className="md:w-full gap-[14rem] flex justify-center items-center md:pt-[4.5rem] pt-[4rem] md:pl-[25rem]">
+      <div className={`border border-[#32374A] dark:border-white font-normal text-xs  md:py-1 md:pt-2 rounded-full py-[0.5rem] flex justify-center items-center gap-7 md:gap-11 px-8 text-[#32374A] dark:text-white`}>
+        <div>
+        <h2 className="flex justify-center items-center"><CiHome /></h2>
+          <h1 className="pb-1 pt-1 hover:underline">Home</h1>
+        </div>
+        <div><h2 className="flex justify-center items-center"><CiViewBoard /></h2>
+          <h1 className="pb-1 pt-1  hover:underline">My Dashboard</h1></div>
+        <div><h2 className="flex justify-center items-center"><CiUser /></h2>
+        <h1 className="pb-1 pt-1  hover:underline">My Profile</h1>
+        </div>
+        
 
       </div>
    <div className="md:flex md:justify-center md:items-center md:gap-5 md:pl-8 hidden">
