@@ -20,6 +20,8 @@ const config = {
     extend: {
       fontFamily:{
         'roboto':['Roboto', 'sans-serif'],
+        'rowdies':['Rowdies', 'sans-serif'],
+        'rakkas': ['Rakkas', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",

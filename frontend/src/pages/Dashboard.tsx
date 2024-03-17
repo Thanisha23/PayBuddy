@@ -64,7 +64,9 @@ const Dashboard = () => {
      )}
       </div>
       <div className="relative flex flex-col justify-center items-center ">
+
         <div className="z-10 flex justify-center items-center md:w-[68rem] w-[19.5rem] h-[29rem] mt-[8rem] rounded-xl bg-white dark:bg-white">
+       
           <div className="z-50 shadow-2xl absolute w-[15rem] h-[11rem] md:w-[25rem] md:h-[15rem] rounded-xl border border-zinc-50/30 top-[2rem] md:top-[1rem] bg-gray-400 bg-opacity-50 text-black transform rotate-10">
           <div className="p-4 pl-7 pr-7 flex justify-between items-center">
             <img className="bg-white rounded-full" width={30} height={25} src="/chip.png" alt="" />
@@ -73,8 +75,13 @@ const Dashboard = () => {
             <div className="pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{user.firstName} {user.lastName}</div>
             <div className="dark:text-gray-600 text-gray-800 pl-10 md:pt-8 pt-2">Total Balance</div>
             <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10"><h1>${userBalance.toFixed(2)}</h1></div>
+
+         </div>
           </div>
-          </div>
+          {/* <div className="z-50 w-[14rem] h-[8rem] border-4 absolute bottom-0 rounded-t-full">
+            <div className="text-gray-400 w-[16rem] text-center pr-16 pt-[2rem] font-rowdies font-semibold text-5xl">PayBuddy</div>
+           
+          </div> */}
         </div>
       </div>
       <div className="fixed bottom-8 left-0 right-0">
