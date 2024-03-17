@@ -24,7 +24,7 @@ const Home = () => {
    
     </div>
       {/* <div className="bg-[#B6AA9D] w-[100] h-screen">  */}
-    <div className="bg-white md:mt-[3rem] mt-[5rem] flex justify-center items-center md:gap-[11rem] sm:gap-[3rem] gap-5 px-[1rem] sm:px-[1rem] rounded-2xl border border-[#32374A] md:border-transparent"> 
+    <div className="bg-white md:mt-[5rem] mt-[5rem] flex justify-center items-center md:gap-[11rem] sm:gap-[3rem] gap-5 px-[1rem] sm:px-[1rem] rounded-2xl border border-[#32374A] md:border-transparent"> 
 
 
         
