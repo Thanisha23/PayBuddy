@@ -7,7 +7,7 @@ const Home = () => {
     
   //  <div className="bg-[#CECDB7] h-screen w-[100] relative">
    <div className="bg-[white] mx-[2rem]  dark:bg-[#020817] h-screen w-[100] relative font-roboto">
-    <div className=" md:w-[4rem] dark:bg-white dark:rounded-full dark:h-[4rem] w-[8rem] md:left-34 md:h-[4rem] h-[8rem]  absolute md:left-10 md:top-9 top-56 left-0 right-0 md:mx-0 mx-auto pt-1"><img src="./finalLogo.jpeg" alt="logo" /></div>
+    <div className=" md:w-[4rem] dark:bg-white dark:rounded-full dark:h-[4rem] w-[8rem] md:left-34 md:h-[4rem] h-[8rem]  absolute md:left-10 md:top-9 top-56 left-0 right-0 md:mx-0 mx-auto pt-1"><img src="" alt="logo" /></div>
     
     <div className="md:w-full gap-[14rem] flex justify-center items-center md:pt-[4.5rem] pt-[4rem] md:pl-[25rem]">
       <div className={`border border-[#32374A] dark:border-white font-normal text-xs  md:py-1 md:pt-2 rounded-full py-[0.5rem] flex justify-center items-center gap-7 md:gap-11 px-8 text-[#32374A] dark:text-white`}>
