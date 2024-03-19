@@ -1,6 +1,6 @@
 // import { ModeToggle } from "@/components/mode-toggle";
 import { useLocation } from "react-router-dom";
-import {useState,useContext,useEffect } from "react";
+import {useState,useContext} from "react";
 import { Button } from "@/components/ui/button";
 import axiosInstance from "@/lib/axiosInstance";
 import { UserContext } from "@/components/context/UserContext";
@@ -9,8 +9,10 @@ import Navbar from "@/components/Navbar";
 import { FaArrowRight } from "react-icons/fa6";
 import Tick from '../../tick.json';
 import Lottie from 'lottie-react';
+import { IoMdCloseCircleOutline } from "react-icons/io";
+import '../Home.module.css'
 const SendMoney = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(true);
   const {user} = useContext(UserContext);
 const [transferData,setTransferData] = useState({
   amount:0,
@@ -38,38 +40,30 @@ const handleTransfer = async() =>{
     console.error("Error transferring money",error);
   }
 }
-
+const blurToggle = isModalOpen ? '' : '';
+const showToggle = isModalOpen ? 'block' : '';
 const closeModal = () => {
   setIsModalOpen(false);
 };
 
-const handleClickOutsideModal = (event: MouseEvent) => {
-  const modal = document.getElementById('modal');
-  if (modal && !modal.contains(event.target as Node)) {
-    setIsModalOpen(false);
+const handleOverlay = () =>{
+  {isModalOpen && 
+      setIsModalOpen(false);
   }
-};
+}
 
-useEffect(() => {
-  if (isModalOpen) {
-    document.addEventListener('mousedown', handleClickOutsideModal);
-  } else {
-    document.removeEventListener('mousedown', handleClickOutsideModal);
-  }
 
-  return () => {
-    document.removeEventListener('mousedown', handleClickOutsideModal);
-  };
-}, [isModalOpen]);
   return (
-    <div className="relative font-roboto">
-      
+    <div onClick={handleOverlay} className={`relative font-roboto ${blurToggle}`}>
+      {isModalOpen && (
+        <div className="overlay" onClick={closeModal}></div>
+      )}
        {isModalOpen && (
-        <div id="modal" className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
-          <div className="bg-white p-8 w-[35rem] h-[35rem] rounded-lg">
+        <div id="modal" className={`${showToggle} fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50  z-50`}>
+          <div className="bg-white w-[18rem] h-[18rem] rounded-lg relative">
             <Lottie animationData={Tick} />
-            <p>Money transferred successfully!</p>
-            <button onClick={closeModal}>Close</button>
+            <div className="absolute bottom-2 w-full text-center text-zinc-800/90 text-2xl font-rakkas">Transaction Successful</div>
+            <button className="absolute top-2 right-2" onClick={closeModal}><IoMdCloseCircleOutline color="black" size={25} /></button>
           </div>
         </div>
       )}

@@ -64,8 +64,8 @@ const Signin = () => {
     // console.log(values)
   }
   return (
-    <div className="my-[3rem] md:my-[5rem] mx-auto md:w-[60%]  lg:w-[70%] w-[85%] border md:border-zinc-50/30  border-x-transparent border-y-transparent  rounded-xl md:flex md:justify-center md:items-center ">
-      <div className="lg:flex lg:justify-center md:h-[35.8rem] lg:items-center lg:w-[50%] md:hidden w-[100%] bg-white rounded-t-full md:rounded-sm">
+    <div className="my-[3rem] md:my-[5rem] mx-auto md:w-[60%]  lg:w-[70%] w-[85%] border md:border-zinc-50/30 border-x-transparent border-y-transparent  rounded-xl md:flex md:justify-center md:items-center ">
+      <div className="lg:flex lg:justify-center md:h-[35.8rem] lg:items-center lg:w-[50%] md:hidden w-[100%] bg-white  rounded-t-full md:rounded-sm">
         <img className="mx-auto ml-4 md:h-[35rem]" src="/logo.png" alt="logo" />
       </div>
       <div className=" md:h-full md:py-[3rem] py-[2rem] md:w-[80%] lg:w-[43%] w-[100%] mx-auto border md:border-transparent border-zinc-50/30">

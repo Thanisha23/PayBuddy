@@ -74,7 +74,7 @@ const Signup = () => {
     }
   }
   return (
-    <div className=" md:my-[4rem] my-[2rem] font-roboto md:h-[36.8rem] mx-auto  md:w-[73%] border md:border-zinc-50/30  border-x-transparent border-y-transparent rounded-lg md:flex md:justify-center md:items-center w-[100%] ">
+    <div className=" md:my-[4rem] my-[2rem] font-roboto md:h-[36.8rem] mx-auto md:w-[73%] border md:border-zinc-50/30  border-x-transparent border-y-transparent rounded-lg md:flex md:justify-center md:items-center w-[100%]">
       {/* <div className="md:w-[50%] w-[90%] rounded-t-full md:rounded-sm bg-white md:h-full h-[60%]  flex justify-center items-center mx-auto md:mx-0">
         <img
           src="/logo-final.png"
