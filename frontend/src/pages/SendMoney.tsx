@@ -12,7 +12,7 @@ import Lottie from 'lottie-react';
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import '../Home.module.css'
 const SendMoney = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const {user} = useContext(UserContext);
 const [transferData,setTransferData] = useState({
   amount:0,
