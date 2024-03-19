@@ -1,4 +1,3 @@
-// import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import UserCard from "@/components/UserCard";
 import axiosInstance from "@/lib/axiosInstance";
@@ -7,19 +6,6 @@ import Navbar from "@/components/Navbar";
 import { IoMdSearch } from "react-icons/io";
 import "../Home.module.css"
 const Transfer = () => {
-  const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
-
-
-  useEffect(()=>{
-      const handleResize = () => {
-        setIsSmallScreen(window.innerWidth <= 600);
-      };
-      window.addEventListener('resize',handleResize);
-      
-      return () => {
-        window.removeEventListener('resize',handleResize);
-      }
-    },[]);
     interface User {
         _id: string;
         username: string;
@@ -47,13 +33,14 @@ const Transfer = () => {
   return (
 
     <div className="relative font-roboto">
-    <div className="mt-0 md:mt-[5rem] md:flex md:justify-start md:items-start flex justify-center items-center gap-0 md:gap-60 bg-[#F8F5CA] dark:bg-[#020817]">
-    <div className="">
-   {!isSmallScreen && (
+   
+    <div className="lg:absolute lg:left-2 lg:block md:hidden hidden">
+   
        <Sidebar />
-   )}
+ 
     </div>
-     <div className="bg-white w-[20rem] md:w-[30rem] h-[33rem] my-[3rem] md:my-[3rem] overflow-hidden rounded-lg">
+    <div className="mt-0 md:mt-[5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
+     <div className="bg-white w-[20rem] md:w-[30rem] h-[33rem] my-[3rem] md:my-[3rem] overflow-hidden rounded-lg lg:ml-[15rem]">
           {" "}
        <div className="pl-6 pt-4 pb-4 border border-transparent border-b-zinc-400/50"><p className="text-black font-medium  text-xl ">Select a recipient</p>
        <p className="text-zinc-800/60 text-sm">This is the beneficiary of your transfer</p></div>
@@ -82,22 +69,16 @@ const Transfer = () => {
                   lastName={user.lastName}
                 />
               ))}
-               {/* <UserCard
-                  key={1}
-                  username="thanisha@gmail.com"
-                  id="165454"
-                  firstName="Thanisha"
-                  lastName="Belchada"
-                /> */}
+               
             </div>
           </div>
         </div>
         
     </div>
-    <div className="fixed bottom-8 left-0 right-0">
-        {isSmallScreen && (
+    <div className="fixed bottom-8 left-0 right-0 block lg:hidden">
+   
          <Navbar />
-     )} 
+ 
         </div>
     </div>
   )

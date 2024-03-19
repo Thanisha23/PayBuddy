@@ -65,12 +65,12 @@ const Signin = () => {
   }
   return (
     <div className="my-[3rem] md:my-[5rem] mx-auto md:w-[60%]  lg:w-[70%] w-[85%] border md:border-zinc-50/30  border-x-transparent border-y-transparent  rounded-xl md:flex md:justify-center md:items-center ">
-      <div className="lg:flex lg:justify-center lg:items-center lg:w-[50%] md:hidden w-[100%] bg-white rounded-t-full md:rounded-sm">
+      <div className="lg:flex lg:justify-center md:h-[35.8rem] lg:items-center lg:w-[50%] md:hidden w-[100%] bg-white rounded-t-full md:rounded-sm">
         <img className="mx-auto ml-4 md:h-[35rem]" src="/logo.png" alt="logo" />
       </div>
-      <div className=" md:h-full md:py-[1rem] py-[2rem] md:pl-[0.8rem] md:px-[2rem] lg:w-[43%] w-[100%] mx-auto border md:border-transparent border-zinc-50/30">
+      <div className=" md:h-full md:py-[3rem] py-[2rem] md:w-[80%] lg:w-[43%] w-[100%] mx-auto border md:border-transparent border-zinc-50/30">
         <div className="flex justify-center items-center">
-          <h1 className="font-medium lg:text-4xl md:text-2xl text-xl md:pb-4 lg:pb-10 text-center leading-6 font-rakkas">
+          <h1 className="font-medium lg:text-4xl md:text-3xl text-3xl md:pb-4 lg:pb-10 text-center leading-6 font-rakkas">
             Welcome back to PayBuddy!
           </h1>
         </div>

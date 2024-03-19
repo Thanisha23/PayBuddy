@@ -40,7 +40,7 @@ const Home = () => {
           </div>
         </div>
         {/* buttons */}
-        <div className="md:flex md:justify-center md:items-center md:gap-5 md:pl-8 hidden">
+        <div className="lg:flex lg:justify-center lg:items-center lg:gap-5 lg:pl-8 md:hidden  hidden">
           <a href="/signup">
             <Button variant="custom">Signup</Button>
           </a>
@@ -50,7 +50,7 @@ const Home = () => {
         </div>
       </div>
      
-      <div className="bg-white md:mt-[5rem] mt-[5rem] md:flex md:justify-center md:items-center md:gap-[11rem] sm:gap-[3rem] gap-5 px-[1rem] sm:px-[1rem] rounded-2xl border border-[#32374A] md:border-transparent pt-6">
+      <div className="bg-white md:mt-[5rem] mt-[5rem] md:flex md:justify-center md:items-center md:[6rem] lg:gap-[11rem] gap-5 px-[1rem] sm:px-[1rem] rounded-2xl border border-[#32374A] md:border-transparent pt-6">
         <div className="block md:hidden w-full mb-4"><img
           className="rounded-full w-[6rem] h-[6rem] mx-auto"
           src="./finalLogo.jpeg"
@@ -74,7 +74,7 @@ const Home = () => {
             alt="photo hai"
           />
         </div>
-        {/* </div> */}
+     
       </div>
       <div className="flex justify-center items-center gap-[4rem] md:hidden mt-11 font-rakkas">
         <a href="/signup">

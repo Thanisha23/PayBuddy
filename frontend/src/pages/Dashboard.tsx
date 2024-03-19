@@ -7,18 +7,7 @@ const Dashboard = () => {
 
  const {user,setUser} = useContext(UserContext);
 
-  const [isSmallScreen,setIsSmallScreen] = useState(window.innerWidth<=600);
 
-  useEffect(()=>{
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 600);
-    };
-    window.addEventListener('resize',handleResize);
-    
-    return () => {
-      window.removeEventListener('resize',handleResize);
-    }
-  },[]);
   
   const [userBalance, setUserBalance] = useState(0);
  
@@ -57,13 +46,14 @@ const Dashboard = () => {
   return (
    
     <div className="relative">
-    <div className="mt-0 md:mt-[5rem] md:flex md:justify-start md:items-start flex justify-center items-center gap-0 md:gap-20 bg-[#F8F5CA] dark:bg-[#020817]">
-      <div className="">
-     {!isSmallScreen && (
+   
+      <div className="lg:absolute lg:left-2 lg:block md:hidden hidden">
+   
          <Sidebar />
-     )}
+   
       </div>
-      <div className="relative flex flex-col justify-center items-center ">
+      <div className="mt-0 md:mt-[5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
+      <div className="relative flex flex-col justify-center items-center lg:ml-[15rem]">
 
         <div className="z-10 flex justify-center items-center md:w-[68rem] w-[19.5rem] h-[29rem] mt-[8rem] rounded-xl bg-white dark:bg-white">
        
@@ -78,16 +68,13 @@ const Dashboard = () => {
 
          </div>
           </div>
-          {/* <div className="z-50 w-[14rem] h-[8rem] border-4 absolute bottom-0 rounded-t-full">
-            <div className="text-gray-400 w-[16rem] text-center pr-16 pt-[2rem] font-rowdies font-semibold text-5xl">PayBuddy</div>
-           
-          </div> */}
+          
         </div>
       </div>
-      <div className="fixed bottom-8 left-0 right-0">
-      {isSmallScreen && (
+      <div className="fixed bottom-8 left-0 right-0 block lg:hidden">
+
          <Navbar />
-     )}
+ 
      </div>
     </div>
 
