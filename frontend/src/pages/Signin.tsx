@@ -64,13 +64,13 @@ const Signin = () => {
     // console.log(values)
   }
   return (
-    <div className="my-[3rem] md:my-[5rem] mx-auto  md:w-[70%] w-[85%] border md:border-zinc-50/30  border-x-transparent border-y-transparent  rounded-xl md:flex md:justify-center md:items-center ">
+    <div className="my-[3rem] md:my-[5rem] mx-auto md:w-[60%]  lg:w-[70%] w-[85%] border md:border-zinc-50/30  border-x-transparent border-y-transparent  rounded-xl md:flex md:justify-center md:items-center ">
       <div className="lg:flex lg:justify-center lg:items-center lg:w-[50%] md:hidden w-[100%] bg-white rounded-t-full md:rounded-sm">
-        <img className="mx-auto ml-3 md:h-[35rem]" src="/logo.png" alt="logo" />
+        <img className="mx-auto ml-4 md:h-[35rem]" src="/logo.png" alt="logo" />
       </div>
-      <div className="md:py-[1rem] py-[4rem] md:pl-[0.8rem] md:w-[43%] w-[100%] mx-auto border md:border-transparent border-zinc-50/30">
+      <div className=" md:h-full md:py-[1rem] py-[2rem] md:pl-[0.8rem] md:px-[2rem] lg:w-[43%] w-[100%] mx-auto border md:border-transparent border-zinc-50/30">
         <div className="flex justify-center items-center">
-          <h1 className="font-medium md:font-bold md:text-xl md:w-[14rem] w-[8rem] text-left leading-6 ">
+          <h1 className="font-medium lg:text-4xl md:text-2xl text-xl md:pb-4 lg:pb-10 text-center leading-6 font-rakkas">
             Welcome back to PayBuddy!
           </h1>
         </div>
@@ -118,11 +118,11 @@ const Signin = () => {
               >
                 {form.formState.isSubmitting ? "Submitting..." : "Submit"}
               </Button>
-              <div className="leading-6 flex justify-center items-center">
-                <h2 className="text-[0.8rem] text-gray-300/50 md:w-[12rem] w-[6rem] leading-4">
+              <div className="flex justify-start items-start">
+                <h2 className="text-[0.8rem] text-gray-300/50">
                   Don't have an account?
                 </h2>
-                <h2 className="font-medium text-xs">
+                <h2 className="font-medium text-xs pl-2">
                   <a href="/signup">Signup here</a>
                 </h2>
               </div>
