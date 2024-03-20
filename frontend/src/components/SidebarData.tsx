@@ -43,7 +43,7 @@ const {toast} = useToast();
             <div className="mr-8 text-[1.2rem] sm:text-[1.2rem] md:text-[1.7rem]">{data.icon}</div>
             <div
               className={`${ toggle ? "opacity-0 delay-200 " : ""
-              } text-[0.9rem] md:text-[1rem] whitespace-pre`}
+              } text-[0.9rem] md:text-[1.2rem] whitespace-pre`}
             >
               {data.text}
             </div>
@@ -69,7 +69,7 @@ const {toast} = useToast();
         <div
           className={`${
             toggle ? "opacity-0 delay-200 " : ""
-          } text-[0.9rem] md:text-[1rem] whitespace-pre`}
+          } text-[0.9rem] md:text-[1.2rem] whitespace-pre`}
         >
           Logout
         </div>
