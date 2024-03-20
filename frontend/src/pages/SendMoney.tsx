@@ -75,7 +75,7 @@ const handleOverlay = () =>{
     </div>
     <div className="mt-0 md:mt-[5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
    
-     <div className="bg-white w-[20rem] md:w-[30rem] h-[30rem] my-[4rem] md:my-[3rem] overflow-hidden rounded-lg lg:ml-[15rem]">
+     <div className="bg-white w-[20rem] md:w-[65rem] md:h-[32rem] h-[30rem] my-[4rem] md:my-[3rem]  md:mt-[5rem]  overflow-hidden rounded-lg lg:ml-[15rem]">
           {" "}
        <div className="pl-6 pt-4 pb-4 border border-transparent border-b-zinc-400/50"><p className="text-black font-medium  text-xl ">Fill in the details</p>
        <p className="text-zinc-800/60 text-sm">Your transfer is almost ready to be executed</p></div>
@@ -97,21 +97,23 @@ const handleOverlay = () =>{
         </div>
        </div>
 
-       <div className="text-black pl-[1.2rem] font-medium text-lg pt-2">Recipient:  <span className="ml-2 text-xs font-normal text-zinc-600/80 px-3 py-1 bg-opacity-15 bg-[#769ce2] rounded-full pt-1">{username}</span></div>
+       <div className="md:px-[1rem]"><div className="text-black pl-[1.2rem] font-medium text-lg pt-2">Recipient:  <span className="ml-2 text-xs font-normal text-zinc-600/80 px-3 py-1 bg-opacity-15 bg-[#769ce2] rounded-full pt-1">{username}</span></div>
 
-       <div className="text-black pl-4 font-medium text-base pt-6 relative">
-        Transfer details:
-        <h1 className="pt-4 mb-2">Amount</h1>
-        <input
-                className="text-black w-[full] h-[2.5rem] text-sm px-[1.5rem] rounded-md border-2 border-zinc-500/30 border-solid"
-                type="number" placeholder="Enter amount" value={transferData.amount === 0 ? '' : transferData.amount} onChange={(e)=>{
-                  setTransferData({...transferData,amount:Number(e.target.value)})
-                }} />
-               <span className="absolute text-black text-xl top-[6.4rem] right-[5.5rem] md:right-[15.5rem]">₹</span>
-      </div>
-      <div className="pl-4 mt-8">
-      <Button variant={"outline"} onClick={handleTransfer}>Transfer Money</Button>
-      </div>
+<div className="text-black pl-4 font-medium text-base pt-6">
+ Transfer details:
+ <h1 className="pt-4 mb-2">Amount</h1>
+<div className="relative">
+<input
+         className="text-black w-[full] h-[2.5rem] text-sm px-[1.5rem] rounded-md border-2 border-zinc-500/30 border-solid"
+         type="number" placeholder="Enter amount" value={transferData.amount === 0 ? '' : transferData.amount} onChange={(e)=>{
+           setTransferData({...transferData,amount:Number(e.target.value)})
+         }} />
+        <span className="absolute text-black text-xl top-2 left-[13rem]">₹</span>
+</div>
+</div>
+<div className="pl-4 mt-8">
+<Button variant={"outline"} onClick={handleTransfer}>Transfer Money</Button>
+</div></div>
     
         </div>
         

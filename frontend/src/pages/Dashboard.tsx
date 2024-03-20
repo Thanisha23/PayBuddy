@@ -52,12 +52,13 @@ const Dashboard = () => {
          <Sidebar />
    
       </div>
+      {/* <div className="w-full bg-red-500">hi</div> */}
       <div className="mt-0 md:mt-[5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
       <div className="relative flex flex-col justify-center items-center lg:ml-[15rem]">
 
-        <div className="z-10 flex justify-center items-center md:w-[68rem] w-[19.5rem] h-[29rem] mt-[8rem] rounded-xl bg-white dark:bg-white">
+        <div className="z-10 flex justify-center items-center md:w-[65rem] w-[19.5rem]  h-[30rem] md:h-[32rem] mt-[5rem] rounded-xl bg-white dark:bg-white my-[3rem] md:my-[3rem] md:mt-[5rem]">
        
-          <div className="z-50 shadow-2xl absolute w-[15rem] h-[11rem] md:w-[25rem] md:h-[15rem] rounded-xl border border-zinc-50/30 top-[2rem] md:top-[1rem] bg-gray-400 bg-opacity-50 text-black transform rotate-10">
+          <div className="z-50 shadow-2xl absolute w-[15rem] h-[11rem] md:w-[25rem] md:h-[15rem] rounded-xl border border-zinc-50/30 top-[2rem] md:-top-[2rem] bg-gray-400 bg-opacity-50 text-black transform rotate-10">
           <div className="p-4 pl-7 pr-7 flex justify-between items-center">
             <img className="bg-white rounded-full" width={30} height={25} src="/chip.png" alt="" />
             <div className="w-[2.5rem] h-[2.3rem] rounded-full bg-white"><img width={50} height={50} src="/logo-final.png" alt="" /></div></div>

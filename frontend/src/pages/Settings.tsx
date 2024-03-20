@@ -43,7 +43,7 @@ const Settings = () => {
     }
 }><FiLogOut size={20} /></button>
    
-         <div className="flex justify-center items-center md:mx-[30rem] mx-5 md:mt-[12rem] mt-[17rem] h-[7rem] w-full border border-zinc-500/30 p-[1.8rem] rounded-xl"> <div className="md:text-2xl text-xl font-medium"> You would like to use PayBuddy in : </div>
+         <div className="flex justify-center items-center md:mx-[20rem] lg:mx-[20rem] mx-5 md:mt-[12rem] mt-[17rem] h-[7rem] w-full border border-zinc-500/30 p-[1.8rem] rounded-xl"> <div className="lg:text-2xl md:text-xl text-md font-medium"> You would like to use PayBuddy in : </div>
        <ModeToggle  /></div>
     </div>
 
