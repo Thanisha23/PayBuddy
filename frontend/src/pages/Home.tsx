@@ -5,9 +5,13 @@ import { CiUser } from "react-icons/ci";
 const Home = () => {
   return (
     
-    <div className="bg-[white] mx-[2rem] md:mx-[4rem]  dark:bg-[#020817] h-screen w-[100] relative font-roboto">
-      {/* logo */}
-      <div className="dark:rounded-full dark:h-[4rem] w-[4rem] md:left-34 h-[8rem] md:rounded-full absolute md:left-10 md:top-9 top-56 left-0 right-0 md:pt-[2.2rem] md:mx-0 mx-auto pt-1 md:block hidden">
+    <div className="bg-[white] mx-[2rem] md:mx-[4rem]  dark:bg-[#020817] h-screen w-[100] relative font-rakkas">
+     
+
+      {/* navbar */}
+      <div className="md:w-full gap-[14rem] flex justify-center items-center md:pt-[4.5rem] pt-[4rem] md:pl-[14rem] lg:pl-[24rem]">
+     {/* logo */}
+     <div className="dark:rounded-full dark:h-[4rem] w-[4rem] md:left-34 h-[8rem] md:rounded-full absolute md:left-28 md:top-9 top-56 left-0 right-0 md:pt-[2.2rem] md:mx-0 mx-auto pt-1 md:block hidden">
         <img
           className="rounded-full md:w-[3rem] md:h-[3rem]"
           src="./finalLogo.jpeg"
@@ -15,8 +19,9 @@ const Home = () => {
         />
       </div>
 
-      {/* navbar */}
-      <div className="md:w-full gap-[14rem] flex justify-center items-center md:pt-[4.5rem] pt-[4rem] md:pl-[22rem]">
+
+
+        {/* button nav */}
         <div
           className={`border border-[#32374A] dark:border-white font-normal text-xs  md:py-1 md:pt-2 rounded-full py-[0.5rem] flex justify-center items-center gap-7 md:gap-11 px-8 text-[#32374A] dark:text-white`}
         >
@@ -40,7 +45,7 @@ const Home = () => {
           </div>
         </div>
         {/* buttons */}
-        <div className="lg:flex lg:justify-center lg:items-center lg:gap-5 lg:pl-8 md:hidden  hidden">
+        <div className="lg:flex lg:justify-center lg:items-center lg:gap-5 lg:pl-8 md:hidden hidden">
           <a href="/signup">
             <Button variant="custom">Signup</Button>
           </a>
@@ -76,7 +81,7 @@ const Home = () => {
         </div>
      
       </div>
-      <div className="flex justify-center items-center gap-[4rem] md:hidden mt-11 font-rakkas">
+      <div className="flex justify-center items-center gap-[4rem] md:hidden  mt-11 font-rakkas">
         <a href="/signup">
           <Button variant="custom">Signup</Button>
         </a>

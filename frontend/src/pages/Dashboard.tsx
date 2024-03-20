@@ -65,7 +65,7 @@ const Dashboard = () => {
            
             <div className="pr-4 pl-9 text-xl  md:text-2xl  font-bold md:font-semibold text-[#020817]">{user.firstName} {user.lastName}</div>
             <div className="dark:text-gray-600 text-gray-800 pl-10 md:pt-11 pt-2">Total Balance</div>
-            <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10"><h1>$  {userBalance.toFixed(2)}</h1></div>
+            <div className="text-gray-900 text-xl md:text-2xl font-semibold pl-10"><h1>₹   {userBalance.toFixed(2)}</h1></div>
 
          </div>
           </div>
