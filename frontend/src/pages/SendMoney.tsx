@@ -54,7 +54,7 @@ const handleOverlay = () =>{
 
 
   return (
-    <div onClick={handleOverlay} className={`relative font-roboto ${blurToggle}`}>
+    <div onClick={handleOverlay} className={`relative font-rakkas ${blurToggle}`}>
       {isModalOpen && (
         <div className="overlay" onClick={closeModal}></div>
       )}
@@ -73,9 +73,9 @@ const handleOverlay = () =>{
        <Sidebar />
  
     </div>
-    <div className="mt-0 md:mt-[5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
+    <div className="mt-0 md:mt-[7.5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
    
-     <div className="bg-white w-[20rem] md:w-[65rem] md:h-[32rem] h-[30rem] my-[4rem] md:my-[3rem]  md:mt-[5rem]  overflow-hidden rounded-lg lg:ml-[15rem]">
+     <div className="bg-white w-[20rem] md:w-[65rem] md:h-[32rem] h-[30rem] my-[4rem] md:my-0  md:mt-[5rem]  overflow-hidden rounded-lg lg:ml-[15rem]">
           {" "}
        <div className="pl-6 pt-4 pb-4 border border-transparent border-b-zinc-400/50"><p className="text-black font-medium  text-xl ">Fill in the details</p>
        <p className="text-zinc-800/60 text-sm">Your transfer is almost ready to be executed</p></div>
@@ -108,7 +108,7 @@ const handleOverlay = () =>{
          type="number" placeholder="Enter amount" value={transferData.amount === 0 ? '' : transferData.amount} onChange={(e)=>{
            setTransferData({...transferData,amount:Number(e.target.value)})
          }} />
-        <span className="absolute text-black text-xl top-2 left-[13rem]">₹</span>
+        <span className="absolute text-black text-xl top-2 left-[12rem]">₹</span>
 </div>
 </div>
 <div className="pl-4 mt-8">

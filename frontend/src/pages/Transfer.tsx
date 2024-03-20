@@ -32,15 +32,15 @@ const Transfer = () => {
       }, [filter]);
   return (
 
-    <div className="relative font-roboto">
+    <div className="relative  font-rakkas">
    
     <div className="lg:absolute lg:left-2 lg:block md:hidden hidden">
    
        <Sidebar />
  
     </div>
-    <div className="mt-0 md:mt-[5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
-     <div className="bg-white md:w-[65rem] w-[19.5rem] h-[32rem] my-[3rem] md:mt-[5rem] md:my-[3rem] overflow-hidden rounded-lg lg:ml-[15rem]">
+    <div className="mt-0 md:mt-[7.5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
+     <div className="bg-white md:w-[65rem] w-[19.5rem] h-[32rem] my-[3rem] md:mt-[5rem] md:my-0 overflow-hidden rounded-lg lg:ml-[15rem]">
           {" "}
        <div className="pl-6 pt-4 pb-4 border border-transparent border-b-zinc-400/50"><p className="text-black font-medium  text-xl ">Select a recipient</p>
        <p className="text-zinc-800/60 text-sm">This is the beneficiary of your transfer</p></div>

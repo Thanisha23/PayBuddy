@@ -7,14 +7,14 @@ const MyProfile = () => {
   const {user} = useContext(UserContext);
 
   return (
-    <div className="relative">
+    <div className="relative font-rakkas">
      <div className="lg:absolute lg:left-2 md:hidden lg:block hidden">
    
       
          <Sidebar />
    
       </div>
-        <div className="mt-0 md:mt-[5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
+        <div className="mt-0 md:mt-[7.5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
       
         <div className= "mt-[9rem] lg:mt-[3rem]">  
         <div className="text-3xl font-medium">Here to update?</div>
