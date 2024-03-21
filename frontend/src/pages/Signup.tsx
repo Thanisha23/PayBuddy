@@ -74,6 +74,7 @@ const Signup = () => {
     } catch (error) {
       toast({
         description: "Signup Error",
+        
       });
     }
   }
