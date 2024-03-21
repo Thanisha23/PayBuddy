@@ -5,14 +5,18 @@ import { FiLogOut } from "react-icons/fi";
 import axiosInstance from "@/lib/axiosInstance";
 import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "@/main";
 
 
 const Settings = () => {
+  const {setIsAuthenticated} = useContext(Context);
     const navigate = useNavigate();
     const {toast} = useToast();
   async function logoutHandler(){
     try {
       await axiosInstance.get("/user/logout");
+      setIsAuthenticated(false);
       toast({
         description:"Logged out"
       })

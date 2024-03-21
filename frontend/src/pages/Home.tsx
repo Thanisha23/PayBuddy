@@ -13,7 +13,7 @@ const Home = () => {
      {/* logo */}
      <div className="dark:rounded-full dark:h-[4rem] w-[4rem] md:left-34 h-[8rem] md:rounded-full absolute md:left-28 md:top-9 top-56 left-0 right-0 md:pt-[2.2rem] md:mx-0 mx-auto pt-1 md:block hidden">
         <img
-          className="rounded-full md:w-[3rem] md:h-[3rem]"
+          className="rounded-full md:w-[4rem] md:h-[4rem]"
           src="./finalLogo.jpeg"
           alt=""
         />
@@ -29,19 +29,19 @@ const Home = () => {
             <h2 className="flex justify-center items-center">
               <CiHome size={18} />
             </h2>
-            <h1 className="pt-1 hover:underline">Home</h1>
+            <h1 className="pt-1 hover:underline"><a href="/">Home</a></h1>
           </div>
           <div>
             <h2 className="flex justify-center items-center">
               <CiViewBoard size={18} />
             </h2>
-            <h1 className="pt-1  hover:underline">Dashboard</h1>
+            <h1 className="pt-1  hover:underline"><a href="/signin">Dashboard</a></h1>
           </div>
           <div>
             <h2 className="flex justify-center items-center">
               <CiUser size={18} />
             </h2>
-            <h1 className=" pt-1  hover:underline">Profile</h1>
+            <h1 className=" pt-1  hover:underline"><a href="/signup">Profile</a></h1>
           </div>
         </div>
         {/* buttons */}
