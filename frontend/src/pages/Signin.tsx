@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "@/lib/axiosInstance";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "@/main";
 const formSchema = z.object({
   username: z.string().min(3, {
@@ -28,6 +28,7 @@ const formSchema = z.object({
 const Signin = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [message,setMessage] = useState('');
   const {setIsAuthenticated} = useContext(Context)
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,8 +51,9 @@ const Signin = () => {
       });
       if (response.status === 200) {
         setIsAuthenticated(true);
+        setMessage(response.data.message)
         toast({
-          description: "Login successful",
+          description: message,
         });
         navigate("/dashboard");
       } else {

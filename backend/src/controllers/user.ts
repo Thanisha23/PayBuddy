@@ -88,25 +88,6 @@ export const signin = async (req:Request,res:Response)=>{
     const user = await User.findOne({
         username:req.body.username,
     }).select("+password");
-
-    // if(user){
-    //     const token = jwt.sign({
-    //         userId:user._id
-    //     },env.JWT_SECRET);
-
-    //     res.cookie("token",token,{
-    //         httpOnly:true,
-    //         secure:true,
-    //         sameSite:"strict",
-    //     });
-
-    //     const isMatch = await bcrypt.compare(req.body.password,user.password)
-    //     return res.status(ResponseStatus.Success).json({
-    //         token:token,
-    //         message:"Login successful",
-    //     })
-       
-    // }
     if(!user){
         return res.status(ResponseStatus.Error).json({
             message:"User not found"
@@ -216,49 +197,11 @@ export const bulkfilter = async (req:Request,res:Response) =>{
    }
 
 }
-// userRouter.delete("/deleteUser",authMiddleware,async(req:MyRequest,res:Response)=>{
-//     try {
-//         const user = await User.findOne({
-//             _id:req.userId,
-//         })
-//         if(!user){
-//             return res.status(ResonseStatus.NotFound).json({
-//                 message:"User Not Found"
-//             });
-//         }
-//         await User.deleteOne({
-//             _id:user._id,
-//         });
 
-//         res.status(ResonseStatus.Success).json({
-//             message:"User deleted successfully",
-//         })
-//     } catch (error) {
-//         console.error("Error deleting user",error);
-//         res.status(ResonseStatus.Error).json({
-//             message:"Error",
-//         })
-//     }
-// })
 
 
 export const logout = async(req:Request,res:Response) => {
-   
-    // const {username} = req.body;
-    // try {
-    //     res.status(ResponseStatus.Success).cookie("token","",{
-    //         expires:new Date(Date.now()),
-    //         sameSite:"strict",
-    //         secure:true,
-    //     }).json({
-    //         message:"Logout successful",
-    //         user:username,
-    //     })
-    // } catch (error) {
-    //     res.status(ResponseStatus.Error).json({
-    //         message:"Error Loggin out",
-    //     });
-    // }
+
     try {
         res.clearCookie("token", { sameSite: "none", secure: true }).status(ResponseStatus.Success).json({
             message:"Logout successful",

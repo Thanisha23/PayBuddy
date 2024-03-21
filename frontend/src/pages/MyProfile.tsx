@@ -17,7 +17,7 @@ const MyProfile = () => {
         <div className="mt-0 md:mt-[7.5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
       
         <div className= "mt-[9rem] lg:mt-[3rem]">  
-        <div className="text-3xl font-medium">Here to update?</div>
+        <div className="text-3xl lg:text-5xl font-medium">Here to update?</div>
             <Update />
         </div>
       
