@@ -29,7 +29,7 @@ const Dashboard = () => {
     async function fetchProfile() {
       try {
         const response = await axiosInstance.get("/account/userProfile");
-        console.log(response);
+        // console.log(response);
       
         setUser({
           firstName:response.data.user.firstName,
