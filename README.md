@@ -65,5 +65,5 @@ VITE_BACKEND_URL=http://localhost:3000/api/v1
 pnpm run dev
 ```
 
-<div align="center"><h4>More better projects to come soon! 😁👀</h4></div>
+<div align="center"><h4>More better projects to come soon!😁👀</h4></div>
 <div align="center"><h4>Made by Thanisha Belchada</h4></div>
