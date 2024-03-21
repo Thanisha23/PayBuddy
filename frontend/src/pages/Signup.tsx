@@ -62,7 +62,7 @@ const Signup = () => {
       if (response.status === 200) {
         setIsAuthenticated(true);
         toast({
-          description: "Signup successful",
+          description: "Signup successful , Please wait..",
         });
         navigate("/dashboard");
       } else {
