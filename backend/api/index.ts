@@ -9,8 +9,6 @@ const app = express();
 app.use(cors(
     {
         origin: env.FRONTEND_URL ,// Replace with your frontend's origin
-        methods: ['GET', 'POST','PUT'], // Specify the allowed HTTP methods
-        allowedHeaders: ['Content-Type','Authorization'], // Specify the allowed headers
         credentials: true // Allow sending cookies from the frontend
       }
 ));

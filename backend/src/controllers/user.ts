@@ -62,7 +62,7 @@ export const signup = async (req: Request, res: Response) => {
     },
     env.JWT_SECRET
   );
-
+  console.log(token);
   res
     .cookie("token", token, {
       httpOnly: true,
@@ -105,6 +105,7 @@ export const signin = async (req: Request, res: Response) => {
         },
         env.JWT_SECRET
       );
+      console.log(token);
       res.cookie("token", token, {
         httpOnly: true,
         secure: true,
