@@ -70,7 +70,7 @@ const Signup = () => {
           description: "Signup Failed",
         });
       }
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       toast({
         description: "Signup Error",

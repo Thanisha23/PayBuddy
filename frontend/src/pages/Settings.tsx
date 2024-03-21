@@ -20,7 +20,7 @@ const Settings = () => {
       toast({
         description:"Logged out"
       })
-      console.log("logging out");
+      // console.log("logging out");
       navigate("/");
     } catch (error) {
       toast({
