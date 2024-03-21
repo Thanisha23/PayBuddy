@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Update from "./pages/Update";
 import MyProfile from "./pages/MyProfile";
 import UserProvider from "./components/context/UserContext";
+import PrivateRoutes from "./components/PrivateRoutes";
 const App = () => {
   return (
   <>
@@ -19,12 +20,14 @@ const App = () => {
 
       <Route path="/signup" element={<Signup />} />
       <Route path="/signin" element={<Signin />} />
+      <Route element={<PrivateRoutes/>}>
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/send" element={<SendMoney />} />
       <Route path="/update" element={<Update />} />
       <Route path="/transfer" element={<Transfer />} />
       <Route path="/mysettings" element={<Settings />} />
       <Route path="/myprofile" element={<MyProfile />} />
+      </Route>
       <Route path="/" element={<Home />} />
     </Routes>
     </BrowserRouter>

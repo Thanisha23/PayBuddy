@@ -14,6 +14,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import axiosInstance from "@/lib/axiosInstance";
+import { useContext } from "react";
+import { Context } from "@/main";
 
 const formSchema = z.object({
   username: z.string().email().min(3, {
@@ -33,6 +35,7 @@ const formSchema = z.object({
 const Signup = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const {setIsAuthenticated} = useContext(Context);
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -57,6 +60,7 @@ const Signup = () => {
         withCredentials: true,
       });
       if (response.status === 200) {
+        setIsAuthenticated(true);
         toast({
           description: "Signup successful",
         });
