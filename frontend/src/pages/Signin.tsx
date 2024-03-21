@@ -49,9 +49,9 @@ const Signin = () => {
         },
         withCredentials: true,
       });
+      setMessage(response.data.message);
       if (response.status === 200) {
         setIsAuthenticated(true);
-        setMessage(response.data.message);
         console.log(response);
         toast({
           description: message,
