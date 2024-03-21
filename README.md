@@ -1,6 +1,6 @@
 <h1 align="center"> PayBuddy</h1>
 <p align="center">
-  <img src="../frontend/public/assets/paybuddy-1.png" alt="PayBUddy">
+  <img src="./frontend/public//assets/paybuddy-1.1.png" alt="PayBuddy">
 </p>
 
 <div align="center"><h4>A modern banking platform with a user-friendly interface, enabling seamless money transfers through an easy two-step process and user search functionality.</h3></div>
