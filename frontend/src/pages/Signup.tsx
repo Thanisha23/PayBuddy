@@ -57,7 +57,7 @@ const Signup = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        withCredentials: false,
+        withCredentials: true,
       });
       if (response.status === 200) {
         setIsAuthenticated(true);
