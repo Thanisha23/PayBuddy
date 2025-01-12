@@ -69,13 +69,7 @@ const Transfer = () => {
                   lastName={user.lastName}
                 />
               ))}
-                {/* <UserCard
-                  key={1}
-                  username="thanishabelchada@gmail.com"
-                  id="465"
-                  firstName="Thanisha"
-                  lastName="Belchada"
-                /> */}
+                
             </div>
           </div>
         </div>

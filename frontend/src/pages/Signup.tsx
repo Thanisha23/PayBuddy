@@ -57,7 +57,7 @@ const Signup = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        withCredentials: true,
+       
       });
       if (response.status === 200) {
         setIsAuthenticated(true);
@@ -70,10 +70,11 @@ const Signup = () => {
           description: "Signup Failed",
         });
       }
-      console.log(response);
+      // console.log(response);
     } catch (error) {
       toast({
         description: "Signup Error",
+        
       });
     }
   }

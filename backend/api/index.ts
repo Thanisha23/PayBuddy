@@ -5,17 +5,17 @@ import cors from "cors";
 import env from '../src/utils/validateEnv'
 const cookieParser = require("cookie-parser");
 const app = express(); 
-// const PORT:Number=3000; 
-app.use(cookieParser());
 
 app.use(cors(
     {
-        origin: env.FRONTEND_URL, // Replace with your frontend's origin
-        methods: ['GET', 'POST','PUT'], // Specify the allowed HTTP methods
-        allowedHeaders: ['Content-Type','Authorization'], // Specify the allowed headers
+        origin: env.FRONTEND_URL ,// Replace with your frontend's origin
         credentials: true // Allow sending cookies from the frontend
       }
 ));
+
+app.use(cookieParser());
+
+
 app.use(express.json());
 // Handling GET / Request 
 app.get('/', (req:Request, res:Response) => { 

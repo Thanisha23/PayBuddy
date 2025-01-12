@@ -5,7 +5,6 @@ import SendMoney from "./pages/SendMoney";
 import Transfer from "./pages/Transfer";
 import Settings from "./pages/Settings";
 import {BrowserRouter,Routes,Route} from "react-router-dom";
-// import { Home } from "lucide-react";
 import Home from "./pages/Home";
 import Update from "./pages/Update";
 import MyProfile from "./pages/MyProfile";

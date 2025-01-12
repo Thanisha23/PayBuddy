@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "@/main";
 
-
 const Settings = () => {
   const {setIsAuthenticated} = useContext(Context);
     const navigate = useNavigate();
@@ -20,7 +19,7 @@ const Settings = () => {
       toast({
         description:"Logged out"
       })
-      console.log("logging out");
+      // console.log("logging out");
       navigate("/");
     } catch (error) {
       toast({

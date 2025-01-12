@@ -70,7 +70,6 @@ const Home = () => {
               <Button variant="newVariant">Get Started</Button>
             </a>
           </p>
-          {/* <div className="absolute bottom-[14.5rem] left-[13.8rem]"></div> */}
         </div>
         <div className="hidden md:block">
           <img

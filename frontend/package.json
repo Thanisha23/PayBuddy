@@ -1,6 +1,7 @@
 {
   "name": "paybuddy",
   "private": true,
+  "proxy":"https://pay-buddy-13dx.vercel.app/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
