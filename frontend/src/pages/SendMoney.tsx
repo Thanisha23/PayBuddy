@@ -1,131 +1,208 @@
-// import { ModeToggle } from "@/components/mode-toggle";
-import { useLocation } from "react-router-dom";
-import {useState,useContext} from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import axiosInstance from "@/lib/axiosInstance";
 import { UserContext } from "@/components/context/UserContext";
 import Sidebar from "@/components/Sidebar";
 import Navbar from "@/components/Navbar";
 import { FaArrowRight } from "react-icons/fa6";
-import Tick from '../../tick.json';
-import Lottie from 'lottie-react';
+import Tick from "../../tick.json";
+import Lottie from "lottie-react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import '../Home.module.css'
+import "../Home.module.css";
+
 const SendMoney = () => {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const {user} = useContext(UserContext);
-const [transferData,setTransferData] = useState({
-  amount:0,
-  to:"",
-});
-const location = useLocation();
-const {userId,username,firstName,lastName} = location.state || {};
-const handleTransfer = async() =>{
-  try {
-    const response = await axiosInstance.post(
-      "/account/transfer",
-      {
-        amount:transferData.amount,
-        to:userId,
-      },
-    );
+  const { user } = useContext(UserContext);
+  const [transferData, setTransferData] = useState({
+    amount: 0,
+    to: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-    console.log(response.data);
-    setTransferData({
-      amount:0,
-      to:"",
-    });
-    setIsModalOpen(true);
-  } catch (error) {
-    console.error("Error transferring money",error);
-  }
-}
-const blurToggle = isModalOpen ? '' : '';
-const showToggle = isModalOpen ? 'block' : '';
-const closeModal = () => {
-  setIsModalOpen(false);
-};
+  const location = useLocation();
+  const { userId, username, firstName, lastName } = location.state || {};
 
-const handleOverlay = () =>{
-  {isModalOpen && 
-      setIsModalOpen(false);
-  }
-}
+  const handleTransfer = async () => {
+    if (!transferData.amount || transferData.amount <= 0) {
+      setError("Please enter a valid amount");
+      return;
+    }
 
+    setIsLoading(true);
+    setError("");
+
+    try {
+      const response = await axiosInstance.post("/account/transfer", {
+        amount: transferData.amount,
+        to: userId,
+      });
+
+      console.log(response.data);
+      setTransferData({
+        amount: 0,
+        to: "",
+      });
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error("Error transferring money", error);
+      setError("Transaction failed. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    navigate("/dashboard");
+  };
 
   return (
-    <div onClick={handleOverlay} className={`relative font-rakkas ${blurToggle}`}>
+    <div className="bg-[#F8F5CA] dark:bg-[#020817] min-h-screen font-rakkas">
+      <div className="hidden lg:block fixed top-3 left-0 h-screen z-10">
+        <Sidebar />
+      </div>
       {isModalOpen && (
-        <div className="overlay" onClick={closeModal}></div>
+        <>
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            onClick={closeModal}
+          ></div>
+          <div className="fixed inset-0 flex justify-center items-center z-50">
+            <div className="bg-white dark:bg-[#1a2133] w-[20rem] sm:w-[24rem] h-auto rounded-2xl shadow-xl relative p-6 flex flex-col items-center">
+              <button className="absolute top-4 right-4" onClick={closeModal}>
+                <IoMdCloseCircleOutline
+                  className="text-gray-500 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400"
+                  size={28}
+                />
+              </button>
+
+              <div className="w-48 h-48">
+                <Lottie animationData={Tick} />
+              </div>
+
+              <div className="text-center mt-4 mb-2">
+                <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                  Transaction Successful
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mt-1">
+                  ₹{transferData.amount} has been sent to {firstName} {lastName}
+                </p>
+              </div>
+
+              <Button className="mt-6 w-full max-w-xs" onClick={closeModal}>
+                Back to Dashboard
+              </Button>
+            </div>
+          </div>
+        </>
       )}
-       {isModalOpen && (
-        <div id="modal" className={`${showToggle} fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50  z-50`}>
-          <div className="bg-white w-[18rem] h-[18rem] rounded-lg relative">
-            <Lottie animationData={Tick} />
-            <div className="absolute bottom-2 w-full text-center text-zinc-800/90 text-2xl font-rakkas">Transaction Successful</div>
-            <button className="absolute top-2 right-2" onClick={closeModal}><IoMdCloseCircleOutline color="black" size={25} /></button>
+      <div className="lg:ml-[18rem] px-4 py-8 flex flex-col items-center justify-center min-h-screen pb-20 lg:pb-8">
+        <div className="w-full max-w-4xl flex flex-col items-center">
+          <div className="bg-white dark:bg-[#1a2133] rounded-xl shadow-lg overflow-hidden w-full sm:w-[90%] md:w-[80%] mx-auto">
+            <div className="px-6 py-5 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-xl font-semibold text-[#32374A] dark:text-white">
+                Send Money
+              </h2>
+              <p className="text-gray-600 dark:text-gray-400 text-sm mt-1">
+                Complete your transaction details
+              </p>
+            </div>
+            <div className="flex justify-center items-center py-8 px-4 bg-blue-50 dark:bg-blue-900/10">
+              <div className="flex items-center gap-4 md:gap-8">
+                <div className="bg-white dark:bg-[#121927] rounded-lg shadow-md p-3 flex flex-col items-center w-[8rem]">
+                  <div className="w-10 h-10 rounded-full border-2 border-blue-500 dark:border-blue-400 flex items-center justify-center text-blue-500 dark:text-blue-400 font-bold mb-2">
+                    {user.firstName
+                      ? user.firstName.slice(0, 1).toUpperCase()
+                      : ""}
+                  </div>
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">
+                    {user.firstName || "You"}
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    {user.lastName || ""}
+                  </p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <FaArrowRight
+                    className="text-blue-500 dark:text-blue-400 mx-2"
+                    size={24}
+                  />
+                  <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                    Transfer
+                  </span>
+                </div>
+                <div className="bg-white dark:bg-[#121927] rounded-lg shadow-md p-3 flex flex-col items-center w-[8rem]">
+                  <div className="w-10 h-10 rounded-full border-2 border-green-500 dark:border-green-400 flex items-center justify-center text-green-500 dark:text-green-400 font-bold mb-2">
+                    {firstName ? firstName.slice(0, 1).toUpperCase() : ""}
+                  </div>
+                  <p className="text-sm font-medium text-gray-900 dark:text-white">
+                    {firstName || "Recipient"}
+                  </p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    {lastName || ""}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="px-6 py-4">
+              <div className="flex items-center">
+                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Sending to:
+                </span>
+                <span className="ml-2 px-3 py-1 bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 text-xs rounded-full">
+                  {username}
+                </span>
+              </div>
+            </div>
+            <div className="px-6 py-6">
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Enter Amount
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <span className="text-gray-500 dark:text-gray-400">₹</span>
+                  </div>
+                  <input
+                    className="block w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 dark:text-white bg-white dark:bg-[#121927] transition-all"
+                    type="number"
+                    placeholder="0.00"
+                    value={transferData.amount === 0 ? "" : transferData.amount}
+                    onChange={(e) => {
+                      setTransferData({
+                        ...transferData,
+                        amount: Number(e.target.value),
+                      });
+                      setError("");
+                    }}
+                  />
+                </div>
+                {error && (
+                  <p className="mt-2 text-sm text-red-600 dark:text-red-400">
+                    {error}
+                  </p>
+                )}
+              </div>
+
+              <Button
+                className="w-full md:w-auto"
+                onClick={handleTransfer}
+                disabled={isLoading}
+              >
+                {isLoading ? "Processing..." : "Send Money"}
+              </Button>
+            </div>
           </div>
         </div>
-      )}
-
-<div className="lg:absolute lg:left-2 lg:block md:hidden hidden">
- 
-       <Sidebar />
- 
+      </div>
+      <div className="fixed bottom-4 sm:bottom-8 left-0 right-0 flex justify-center lg:hidden">
+        <Navbar />
+      </div>
     </div>
-    <div className="mt-0 md:mt-[7.5rem] md:flex md:justify-center md:items-center flex justify-center items-center bg-[#F8F5CA] dark:bg-[#020817]">
-   
-     <div className="bg-white w-[20rem] md:w-[65rem] md:h-[32rem] h-[30rem] my-[4rem] md:my-0  md:mt-[5rem]  overflow-hidden rounded-lg lg:ml-[15rem]">
-          {" "}
-       <div className="pl-6 pt-4 pb-4 border border-transparent border-b-zinc-400/50"><p className="text-black font-medium  text-xl ">Fill in the details</p>
-       <p className="text-zinc-800/60 text-sm">Your transfer is almost ready to be executed</p></div>
-       <div className="flex justify-center items-center bg-opacity-15 bg-[#769ce2] h-[8rem] gap-[1.5rem]">
-        <div className="w-[7rem] h-[4.5rem] bg-white rounded-md p-2 pl-3 flex justify-center items-center flex-col">
-          <div className="text-black w-[1.5rem] h-[1.5rem] flex justify-center items-center rounded-full border border-black">{user.firstName ? user.firstName.slice(0,1).toUpperCase(): ""}</div>
-          <div className="text-center text-black">
-            <div className="text-xs">{user.firstName? user.firstName: "Error"}</div>
-            <div className="text-xs">{user.lastName? user.lastName: "Error"}</div>
-          </div>
-        </div>
-        <div><FaArrowRight color="black" size={22} /></div>
-        <div className="w-[7rem] h-[4.5rem] bg-white rounded-md p-2 pl-3 flex justify-center items-center flex-col">
-          <div className="text-black w-[1.5rem] h-[1.5rem] flex justify-center items-center rounded-full border border-black">{firstName? firstName.slice(0,1).toUpperCase() :""}</div>
-          <div className=" text-black text-center">
-            <div className="text-xs">{firstName ? firstName :"Error"}</div>
-            <div className="text-xs">{lastName ? lastName :"Error"}</div>
-          </div>
-        </div>
-       </div>
+  );
+};
 
-       <div className="md:px-[1rem]"><div className="text-black pl-[1.2rem] font-medium text-lg pt-2">Recipient:  <span className="ml-2 text-xs font-normal text-zinc-600/80 px-3 py-1 bg-opacity-15 bg-[#769ce2] rounded-full pt-1">{username}</span></div>
-
-<div className="text-black pl-4 font-medium text-base pt-6">
- Transfer details:
- <h1 className="pt-4 mb-2">Amount</h1>
-<div className="relative">
-<input
-         className="text-black w-[full] h-[2.5rem] text-sm px-[1.5rem] rounded-md border-2 border-zinc-500/30 border-solid"
-         type="number" placeholder="Enter amount" value={transferData.amount === 0 ? '' : transferData.amount} onChange={(e)=>{
-           setTransferData({...transferData,amount:Number(e.target.value)})
-         }} />
-        <span className="absolute text-black text-xl top-2 left-[12rem]">₹</span>
-</div>
-</div>
-<div className="pl-4 mt-8">
-<Button variant={"outline"} onClick={handleTransfer}>Transfer Money</Button>
-</div></div>
-    
-        </div>
-        
-    </div>
-    <div className="fixed bottom-8 left-0 right-0 block lg:hidden">
-       
-         <Navbar />
-    
-        </div>
-    </div>
-  )
-}
-
-export default SendMoney
-
+export default SendMoney;
